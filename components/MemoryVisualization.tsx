@@ -14,7 +14,7 @@ interface MemoryVisualizationProps {
 export default function MemoryVisualization({ slots }: MemoryVisualizationProps) {
   return (
     <div className="space-y-2">
-      <h4 className="font-bold text-gray-700 mb-3">📊 Visualisasi Memori:</h4>
+      <h4 className="font-bold text-gray-900 mb-3">📊 Visualisasi Memori:</h4>
       {slots.map((slot, index) => (
         <div 
           key={index}
@@ -24,8 +24,8 @@ export default function MemoryVisualization({ slots }: MemoryVisualizationProps)
             {slot.address}
           </div>
           <div className="flex-1">
-            <div className="font-bold text-gray-800">{slot.variable}</div>
-            <div className="text-sm text-gray-600">{slot.type}</div>
+            <div className="font-bold text-gray-900">{slot.variable}</div>
+            <div className="text-sm text-gray-900">{slot.type}</div>
           </div>
           <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg font-mono font-bold">
             {slot.value}

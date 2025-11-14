@@ -96,7 +96,7 @@ export default function FruitBasket({ onAddFruit, onRemoveFruit }: FruitBasketPr
           {/* Empty state */}
           {fruits.length === 0 && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-gray-400 text-lg font-semibold">Baskom kosong!</p>
+              <p className="text-gray-600 text-lg font-semibold">Baskom kosong!</p>
             </div>
           )}
           
@@ -106,12 +106,12 @@ export default function FruitBasket({ onAddFruit, onRemoveFruit }: FruitBasketPr
 
         {/* Array visualization */}
         <div className="mt-4 bg-white p-4 rounded-lg border-2 border-gray-300">
-          <p className="text-xs text-gray-500 mb-1">Representasi Array:</p>
+          <p className="text-xs text-gray-700 mb-1">Representasi Array:</p>
           <div className="font-mono text-sm sm:text-base break-all">
             <span className="text-blue-600">String[]</span> jeruk = 
             <span className="text-green-600"> {`{${fruits.map((_, i) => `"🍊"`).join(', ')}}`}</span>;
           </div>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-gray-700 mt-2">
             Length: <span className="font-bold text-blue-600">{fruits.length}</span>
           </p>
         </div>

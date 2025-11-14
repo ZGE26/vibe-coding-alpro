@@ -9,7 +9,7 @@ export default function ControlFlowPage() {
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             🔀 Control Flow (Alur Kontrol)
           </h1>
 

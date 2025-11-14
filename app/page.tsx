@@ -51,10 +51,10 @@ export default function Home() {
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
             ☕ Belajar Java Programming
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-900 max-w-2xl mx-auto">
             Pelajari bahasa Java dengan visualisasi interaktif dan contoh case nyata yang mudah dipahami
           </p>
           <div className="mt-4 inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold">
@@ -72,10 +72,10 @@ export default function Home() {
             >
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full border-2 border-transparent hover:border-indigo-500">
                 <div className="text-5xl mb-4">{topic.icon}</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-indigo-600 transition-colors">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
                   {topic.title}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-900">
                   {topic.description}
                 </p>
                 <div className="mt-4 text-indigo-600 font-semibold flex items-center">
@@ -89,7 +89,7 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center mt-16">
-          <p className="text-gray-600">
+          <p className="text-gray-900">
             💡 Tip: Klik pada topik yang ingin kamu pelajari untuk memulai
           </p>
         </div>

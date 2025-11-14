@@ -23,7 +23,7 @@ export default function MethodPage() {
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             ⚡ Method di Java
           </h1>
 
@@ -49,7 +49,7 @@ export default function MethodPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Panjang (cm):</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Panjang (cm):</label>
                   <input
                     type="number"
                     value={panjang}
@@ -58,7 +58,7 @@ export default function MethodPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Lebar (cm):</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Lebar (cm):</label>
                   <input
                     type="number"
                     value={lebar}
@@ -69,17 +69,17 @@ export default function MethodPage() {
               </div>
 
               <div className="bg-gradient-to-r from-blue-100 to-cyan-100 p-6 rounded-lg border-2 border-blue-300">
-                <h4 className="font-bold text-gray-800 mb-3">📊 Hasil Perhitungan:</h4>
+                <h4 className="font-bold text-gray-900 mb-3">📊 Hasil Perhitungan:</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <p className="text-sm text-gray-600 mb-1">Luas Persegi Panjang:</p>
+                    <p className="text-sm text-gray-900 mb-1">Luas Persegi Panjang:</p>
                     <p className="text-3xl font-bold text-blue-600">{hitungLuas(panjang, lebar)} cm²</p>
-                    <p className="text-xs text-gray-500 mt-2 font-mono">hitungLuas({panjang}, {lebar})</p>
+                    <p className="text-xs text-gray-700 mt-2 font-mono">hitungLuas({panjang}, {lebar})</p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <p className="text-sm text-gray-600 mb-1">Keliling Persegi Panjang:</p>
+                    <p className="text-sm text-gray-900 mb-1">Keliling Persegi Panjang:</p>
                     <p className="text-3xl font-bold text-green-600">{hitungKeliling(panjang, lebar)} cm</p>
-                    <p className="text-xs text-gray-500 mt-2 font-mono">hitungKeliling({panjang}, {lebar})</p>
+                    <p className="text-xs text-gray-700 mt-2 font-mono">hitungKeliling({panjang}, {lebar})</p>
                   </div>
                 </div>
               </div>
@@ -222,7 +222,7 @@ public class MethodReturn {
           >
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
                   Suhu Celsius:
                 </label>
                 <input
@@ -235,27 +235,27 @@ public class MethodReturn {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gradient-to-br from-orange-100 to-red-100 p-6 rounded-lg border-2 border-orange-300">
-                  <p className="text-sm text-gray-700 mb-2">🌡️ Fahrenheit:</p>
+                  <p className="text-sm text-gray-900 mb-2">🌡️ Fahrenheit:</p>
                   <p className="text-4xl font-bold text-orange-600">
                     {celsiusToFahrenheit(suhu).toFixed(1)}°F
                   </p>
-                  <p className="text-xs text-gray-500 mt-3 font-mono">
+                  <p className="text-xs text-gray-700 mt-3 font-mono">
                     celsiusToFahrenheit({suhu})
                   </p>
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-gray-900 mt-2">
                     Formula: (C × 9/5) + 32
                   </p>
                 </div>
 
                 <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-6 rounded-lg border-2 border-blue-300">
-                  <p className="text-sm text-gray-700 mb-2">❄️ Kelvin:</p>
+                  <p className="text-sm text-gray-900 mb-2">❄️ Kelvin:</p>
                   <p className="text-4xl font-bold text-blue-600">
                     {(suhu + 273.15).toFixed(2)}K
                   </p>
-                  <p className="text-xs text-gray-500 mt-3 font-mono">
+                  <p className="text-xs text-gray-700 mt-3 font-mono">
                     celsiusToKelvin({suhu})
                   </p>
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-gray-900 mt-2">
                     Formula: C + 273.15
                   </p>
                 </div>
@@ -406,7 +406,7 @@ public class MethodScope {
           >
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
                   Radius (cm):
                 </label>
                 <input
@@ -420,22 +420,22 @@ public class MethodScope {
               <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg border-2 border-purple-300">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <p className="text-sm text-gray-600 mb-1">📐 Luas Lingkaran:</p>
+                    <p className="text-sm text-gray-900 mb-1">📐 Luas Lingkaran:</p>
                     <p className="text-3xl font-bold text-purple-600">
                       {hitungLuasLingkaran(radius).toFixed(2)} cm²
                     </p>
-                    <p className="text-xs text-gray-500 mt-2">π × r²</p>
-                    <p className="text-xs text-gray-500 font-mono mt-1">
+                    <p className="text-xs text-gray-700 mt-2">π × r²</p>
+                    <p className="text-xs text-gray-700 font-mono mt-1">
                       hitungLuas({radius})
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow">
-                    <p className="text-sm text-gray-600 mb-1">⭕ Keliling Lingkaran:</p>
+                    <p className="text-sm text-gray-900 mb-1">⭕ Keliling Lingkaran:</p>
                     <p className="text-3xl font-bold text-pink-600">
                       {(2 * Math.PI * radius).toFixed(2)} cm
                     </p>
-                    <p className="text-xs text-gray-500 mt-2">2 × π × r</p>
-                    <p className="text-xs text-gray-500 font-mono mt-1">
+                    <p className="text-xs text-gray-700 mt-2">2 × π × r</p>
+                    <p className="text-xs text-gray-700 font-mono mt-1">
                       hitungKeliling({radius})
                     </p>
                   </div>

@@ -10,7 +10,7 @@ interface ArrayVisualizationProps {
 export default function ArrayVisualization({ items, title = "Array" }: ArrayVisualizationProps) {
   return (
     <div className="space-y-4">
-      {title && <h4 className="font-bold text-gray-700 text-center">{title}</h4>}
+      {title && <h4 className="font-bold text-gray-900 text-center">{title}</h4>}
       
       {/* Baskom Container */}
       <div className="relative">
@@ -45,7 +45,7 @@ export default function ArrayVisualization({ items, title = "Array" }: ArrayVisu
         </div>
         
         {/* Array bracket visualization */}
-        <div className="mt-4 text-center font-mono text-sm text-gray-600">
+        <div className="mt-4 text-center font-mono text-sm text-gray-900">
           [ {items.join(', ')} ]
         </div>
       </div>

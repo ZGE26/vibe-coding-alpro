@@ -32,7 +32,7 @@ export default function TipeDataPage() {
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             📊 Tipe Data di Java
           </h1>
 
@@ -178,7 +178,7 @@ public class FloatDemo {
               <div className="text-6xl font-bold text-blue-600 mb-4 animate-pulse">
                 {animatedValue}
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-900">
                 Nilai <code className="bg-gray-200 px-2 py-1 rounded">int counter = {animatedValue}</code>
               </p>
               <div className="mt-4 bg-blue-50 p-4 rounded-lg">
@@ -272,7 +272,7 @@ public class BooleanDemo {
                 >
                   Toggle Boolean
                 </button>
-                <p className="mt-4 text-gray-600">
+                <p className="mt-4 text-gray-900">
                   <code className="bg-gray-200 px-2 py-1 rounded">
                     boolean aktif = {booleanDemo.toString()}
                   </code>
@@ -334,19 +334,19 @@ public class StringDemo {
                 />
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-blue-50 p-3 rounded-lg">
-                    <p className="text-sm text-gray-600">Length:</p>
+                    <p className="text-sm text-gray-900">Length:</p>
                     <p className="font-bold text-blue-800">{stringDemo.length}</p>
                   </div>
                   <div className="bg-green-50 p-3 rounded-lg">
-                    <p className="text-sm text-gray-600">Uppercase:</p>
+                    <p className="text-sm text-gray-900">Uppercase:</p>
                     <p className="font-bold text-green-800">{stringDemo.toUpperCase()}</p>
                   </div>
                   <div className="bg-purple-50 p-3 rounded-lg">
-                    <p className="text-sm text-gray-600">Lowercase:</p>
+                    <p className="text-sm text-gray-900">Lowercase:</p>
                     <p className="font-bold text-purple-800">{stringDemo.toLowerCase()}</p>
                   </div>
                   <div className="bg-orange-50 p-3 rounded-lg">
-                    <p className="text-sm text-gray-600">Reversed:</p>
+                    <p className="text-sm text-gray-900">Reversed:</p>
                     <p className="font-bold text-orange-800">{stringDemo.split('').reverse().join('')}</p>
                   </div>
                 </div>

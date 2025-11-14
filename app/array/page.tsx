@@ -18,7 +18,7 @@ export default function ArrayPage() {
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             🍊 Array di Java
           </h1>
 
@@ -616,7 +616,7 @@ function ArrayCalculator() {
     <div className="space-y-4">
       {/* Array Display */}
       <div className="bg-white p-4 rounded-lg border-2 border-gray-300">
-        <p className="text-sm text-gray-600 mb-2">Array:</p>
+        <p className="text-sm text-gray-900 mb-2">Array:</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {numbers.map((num, index) => (
             <div key={index} className="relative group">
@@ -635,7 +635,7 @@ function ArrayCalculator() {
             </div>
           ))}
         </div>
-        <p className="text-xs text-gray-500">Length: {numbers.length}</p>
+        <p className="text-xs text-gray-700">Length: {numbers.length}</p>
       </div>
 
       {/* Add Number */}

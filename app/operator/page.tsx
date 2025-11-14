@@ -20,7 +20,7 @@ export default function OperatorPage() {
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             ➕ Operator di Java
           </h1>
 
@@ -39,7 +39,7 @@ export default function OperatorPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Angka 1:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Angka 1:</label>
                   <input
                     type="number"
                     value={calc1}
@@ -48,7 +48,7 @@ export default function OperatorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Angka 2:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Angka 2:</label>
                   <input
                     type="number"
                     value={calc2}
@@ -60,34 +60,34 @@ export default function OperatorPage() {
               
               <div className="grid grid-cols-3 gap-3">
                 <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200">
-                  <p className="text-sm text-gray-600">Penjumlahan (+)</p>
+                  <p className="text-sm text-gray-900">Penjumlahan (+)</p>
                   <p className="text-2xl font-bold text-green-600">{calc1 + calc2}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1} + {calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1} + {calc2}</p>
                 </div>
                 <div className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
-                  <p className="text-sm text-gray-600">Pengurangan (-)</p>
+                  <p className="text-sm text-gray-900">Pengurangan (-)</p>
                   <p className="text-2xl font-bold text-red-600">{calc1 - calc2}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1} - {calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1} - {calc2}</p>
                 </div>
                 <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
-                  <p className="text-sm text-gray-600">Perkalian (*)</p>
+                  <p className="text-sm text-gray-900">Perkalian (*)</p>
                   <p className="text-2xl font-bold text-blue-600">{calc1 * calc2}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1} * {calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1} * {calc2}</p>
                 </div>
                 <div className="bg-purple-50 p-4 rounded-lg border-2 border-purple-200">
-                  <p className="text-sm text-gray-600">Pembagian (/)</p>
+                  <p className="text-sm text-gray-900">Pembagian (/)</p>
                   <p className="text-2xl font-bold text-purple-600">{calc2 !== 0 ? (calc1 / calc2).toFixed(2) : 'Error'}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1} / {calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1} / {calc2}</p>
                 </div>
                 <div className="bg-orange-50 p-4 rounded-lg border-2 border-orange-200">
-                  <p className="text-sm text-gray-600">Modulus (%)</p>
+                  <p className="text-sm text-gray-900">Modulus (%)</p>
                   <p className="text-2xl font-bold text-orange-600">{calc2 !== 0 ? calc1 % calc2 : 'Error'}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1} % {calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1} % {calc2}</p>
                 </div>
                 <div className="bg-pink-50 p-4 rounded-lg border-2 border-pink-200">
-                  <p className="text-sm text-gray-600">Pangkat (**)</p>
+                  <p className="text-sm text-gray-900">Pangkat (**)</p>
                   <p className="text-2xl font-bold text-pink-600">{Math.pow(calc1, calc2)}</p>
-                  <p className="text-xs text-gray-500 mt-1">{calc1}^{calc2}</p>
+                  <p className="text-xs text-gray-700 mt-1">{calc1}^{calc2}</p>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ public class OperatorPenugasan {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Nilai A:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Nilai A:</label>
                   <input
                     type="number"
                     value={compareA}
@@ -181,7 +181,7 @@ public class OperatorPenugasan {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Nilai B:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Nilai B:</label>
                   <input
                     type="number"
                     value={compareB}
@@ -201,7 +201,7 @@ public class OperatorPenugasan {
                   { op: '<=', result: compareA <= compareB, label: 'Lebih kecil/sama' },
                 ].map((item, idx) => (
                   <div key={idx} className={`p-4 rounded-lg border-2 ${item.result ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
-                    <p className="text-sm text-gray-600">{item.label}</p>
+                    <p className="text-sm text-gray-900">{item.label}</p>
                     <p className="text-xl font-bold">{compareA} {item.op} {compareB}</p>
                     <p className={`text-2xl font-bold ${item.result ? 'text-green-600' : 'text-red-600'}`}>
                       {item.result ? 'TRUE' : 'FALSE'}
@@ -251,7 +251,7 @@ public class OperatorPerbandingan {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Umur:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Umur:</label>
                   <input
                     type="number"
                     value={logicAge}
@@ -260,7 +260,7 @@ public class OperatorPerbandingan {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Punya SIM:</label>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">Punya SIM:</label>
                   <button
                     onClick={() => setLogicHasSIM(!logicHasSIM)}
                     className={`w-full px-4 py-2 rounded-lg text-xl font-bold transition-colors ${
@@ -273,7 +273,7 @@ public class OperatorPerbandingan {
               </div>
 
               <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg border-2 border-purple-300">
-                <h4 className="font-bold text-gray-800 mb-4">Hasil Pengecekan:</h4>
+                <h4 className="font-bold text-gray-900 mb-4">Hasil Pengecekan:</h4>
                 
                 <div className="space-y-3">
                   <div className={`p-4 rounded-lg ${logicAge >= 17 ? 'bg-green-100 border-2 border-green-400' : 'bg-red-100 border-2 border-red-400'}`}>
