@@ -3,7 +3,7 @@ interface CodeExampleProps {
   language?: string;
 }
 
-export default function CodeExample({ code, language = 'javascript' }: CodeExampleProps) {
+export default function CodeExample({ code, language = 'java' }: CodeExampleProps) {
   return (
     <div className="my-4">
       <div className="bg-gray-800 rounded-t-lg px-4 py-2 flex items-center justify-between">

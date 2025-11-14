@@ -1,8 +1,19 @@
+'use client';
+
+import { useState } from 'react';
 import BackButton from '@/components/BackButton';
 import ContentCard from '@/components/ContentCard';
 import CodeExample from '@/components/CodeExample';
+import InteractiveDemo from '@/components/InteractiveDemo';
 
 export default function OperatorPage() {
+  const [calc1, setCalc1] = useState(10);
+  const [calc2, setCalc2] = useState(5);
+  const [compareA, setCompareA] = useState(15);
+  const [compareB, setCompareB] = useState(10);
+  const [logicAge, setLogicAge] = useState(20);
+  const [logicHasSIM, setLogicHasSIM] = useState(true);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
@@ -10,401 +21,371 @@ export default function OperatorPage() {
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-            ➕ Operator
+            ➕ Operator di Java
           </h1>
 
           <ContentCard title="Apa itu Operator?" icon="💡">
             <p className="mb-4">
               Operator adalah simbol khusus yang digunakan untuk melakukan operasi pada 
-              nilai atau variabel. Operator memungkinkan kita melakukan perhitungan 
-              matematika, perbandingan, dan operasi logika dalam program.
+              variabel dan nilai. Java memiliki berbagai jenis operator untuk aritmatika, 
+              perbandingan, logika, dan lainnya.
             </p>
           </ContentCard>
+
+          <InteractiveDemo 
+            title="Kalkulator Interaktif" 
+            description="Ubah nilai untuk melihat hasil operasi secara real-time"
+          >
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Angka 1:</label>
+                  <input
+                    type="number"
+                    value={calc1}
+                    onChange={(e) => setCalc1(Number(e.target.value))}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Angka 2:</label>
+                  <input
+                    type="number"
+                    value={calc2}
+                    onChange={(e) => setCalc2(Number(e.target.value))}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
+                  />
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200">
+                  <p className="text-sm text-gray-600">Penjumlahan (+)</p>
+                  <p className="text-2xl font-bold text-green-600">{calc1 + calc2}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1} + {calc2}</p>
+                </div>
+                <div className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
+                  <p className="text-sm text-gray-600">Pengurangan (-)</p>
+                  <p className="text-2xl font-bold text-red-600">{calc1 - calc2}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1} - {calc2}</p>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
+                  <p className="text-sm text-gray-600">Perkalian (*)</p>
+                  <p className="text-2xl font-bold text-blue-600">{calc1 * calc2}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1} * {calc2}</p>
+                </div>
+                <div className="bg-purple-50 p-4 rounded-lg border-2 border-purple-200">
+                  <p className="text-sm text-gray-600">Pembagian (/)</p>
+                  <p className="text-2xl font-bold text-purple-600">{calc2 !== 0 ? (calc1 / calc2).toFixed(2) : 'Error'}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1} / {calc2}</p>
+                </div>
+                <div className="bg-orange-50 p-4 rounded-lg border-2 border-orange-200">
+                  <p className="text-sm text-gray-600">Modulus (%)</p>
+                  <p className="text-2xl font-bold text-orange-600">{calc2 !== 0 ? calc1 % calc2 : 'Error'}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1} % {calc2}</p>
+                </div>
+                <div className="bg-pink-50 p-4 rounded-lg border-2 border-pink-200">
+                  <p className="text-sm text-gray-600">Pangkat (**)</p>
+                  <p className="text-2xl font-bold text-pink-600">{Math.pow(calc1, calc2)}</p>
+                  <p className="text-xs text-gray-500 mt-1">{calc1}^{calc2}</p>
+                </div>
+              </div>
+            </div>
+          </InteractiveDemo>
 
           <ContentCard title="1. Operator Aritmatika" icon="🔢">
             <p className="mb-3">
               Operator aritmatika digunakan untuk melakukan operasi matematika dasar.
             </p>
             
-            <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="border px-4 py-2">Operator</th>
-                    <th className="border px-4 py-2">Nama</th>
-                    <th className="border px-4 py-2">Contoh</th>
-                    <th className="border px-4 py-2">Hasil</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">+</td>
-                    <td className="border px-4 py-2">Penjumlahan</td>
-                    <td className="border px-4 py-2 font-mono">5 + 3</td>
-                    <td className="border px-4 py-2 text-center">8</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">-</td>
-                    <td className="border px-4 py-2">Pengurangan</td>
-                    <td className="border px-4 py-2 font-mono">5 - 3</td>
-                    <td className="border px-4 py-2 text-center">2</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">*</td>
-                    <td className="border px-4 py-2">Perkalian</td>
-                    <td className="border px-4 py-2 font-mono">5 * 3</td>
-                    <td className="border px-4 py-2 text-center">15</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">/</td>
-                    <td className="border px-4 py-2">Pembagian</td>
-                    <td className="border px-4 py-2 font-mono">15 / 3</td>
-                    <td className="border px-4 py-2 text-center">5</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">%</td>
-                    <td className="border px-4 py-2">Modulus (Sisa Bagi)</td>
-                    <td className="border px-4 py-2 font-mono">10 % 3</td>
-                    <td className="border px-4 py-2 text-center">1</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 text-center font-mono">**</td>
-                    <td className="border px-4 py-2">Pangkat</td>
-                    <td className="border px-4 py-2 font-mono">2 ** 3</td>
-                    <td className="border px-4 py-2 text-center">8</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             <CodeExample 
-              code={`// Contoh penggunaan operator aritmatika
-let a = 10;
-let b = 3;
-
-console.log(a + b);   // 13 (penjumlahan)
-console.log(a - b);   // 7  (pengurangan)
-console.log(a * b);   // 30 (perkalian)
-console.log(a / b);   // 3.333... (pembagian)
-console.log(a % b);   // 1  (sisa bagi)
-console.log(a ** b);  // 1000 (10 pangkat 3)
-
-// Contoh praktis
-let harga = 50000;
-let jumlah = 3;
-let total = harga * jumlah;
-console.log(total);   // 150000`}
-            />
-          </ContentCard>
-
-          <ContentCard title="2. Operator Penugasan (Assignment)" icon="📝">
-            <p className="mb-3">
-              Operator penugasan digunakan untuk memberikan nilai ke variabel.
-            </p>
-            
-            <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="border px-4 py-2">Operator</th>
-                    <th className="border px-4 py-2">Contoh</th>
-                    <th className="border px-4 py-2">Sama Dengan</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">=</td>
-                    <td className="border px-4 py-2 font-mono">x = 5</td>
-                    <td className="border px-4 py-2 font-mono">x = 5</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">+=</td>
-                    <td className="border px-4 py-2 font-mono">x += 3</td>
-                    <td className="border px-4 py-2 font-mono">x = x + 3</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">-=</td>
-                    <td className="border px-4 py-2 font-mono">x -= 3</td>
-                    <td className="border px-4 py-2 font-mono">x = x - 3</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">*=</td>
-                    <td className="border px-4 py-2 font-mono">x *= 3</td>
-                    <td className="border px-4 py-2 font-mono">x = x * 3</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">/=</td>
-                    <td className="border px-4 py-2 font-mono">x /= 3</td>
-                    <td className="border px-4 py-2 font-mono">x = x / 3</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <CodeExample 
-              code={`let skor = 100;
-
-// Penugasan biasa
-skor = 80;
-console.log(skor);  // 80
-
-// Penugasan dengan operasi
-skor += 20;  // skor = skor + 20
-console.log(skor);  // 100
-
-skor -= 10;  // skor = skor - 10
-console.log(skor);  // 90
-
-skor *= 2;   // skor = skor * 2
-console.log(skor);  // 180
-
-skor /= 3;   // skor = skor / 3
-console.log(skor);  // 60`}
-            />
-          </ContentCard>
-
-          <ContentCard title="3. Operator Perbandingan" icon="⚖️">
-            <p className="mb-3">
-              Operator perbandingan digunakan untuk membandingkan dua nilai. 
-              Hasilnya selalu berupa boolean (true atau false).
-            </p>
-            
-            <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="border px-4 py-2">Operator</th>
-                    <th className="border px-4 py-2">Nama</th>
-                    <th className="border px-4 py-2">Contoh</th>
-                    <th className="border px-4 py-2">Hasil</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">==</td>
-                    <td className="border px-4 py-2">Sama dengan (nilai)</td>
-                    <td className="border px-4 py-2 font-mono">5 == "5"</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">===</td>
-                    <td className="border px-4 py-2">Sama dengan (nilai & tipe)</td>
-                    <td className="border px-4 py-2 font-mono">5 === "5"</td>
-                    <td className="border px-4 py-2 text-center">false</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">!=</td>
-                    <td className="border px-4 py-2">Tidak sama (nilai)</td>
-                    <td className="border px-4 py-2 font-mono">5 != "5"</td>
-                    <td className="border px-4 py-2 text-center">false</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">!==</td>
-                    <td className="border px-4 py-2">Tidak sama (nilai & tipe)</td>
-                    <td className="border px-4 py-2 font-mono">5 !== "5"</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">&gt;</td>
-                    <td className="border px-4 py-2">Lebih besar dari</td>
-                    <td className="border px-4 py-2 font-mono">7 &gt; 5</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">&lt;</td>
-                    <td className="border px-4 py-2">Lebih kecil dari</td>
-                    <td className="border px-4 py-2 font-mono">5 &lt; 7</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">&gt;=</td>
-                    <td className="border px-4 py-2">Lebih besar atau sama dengan</td>
-                    <td className="border px-4 py-2 font-mono">5 &gt;= 5</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">&lt;=</td>
-                    <td className="border px-4 py-2">Lebih kecil atau sama dengan</td>
-                    <td className="border px-4 py-2 font-mono">3 &lt;= 5</td>
-                    <td className="border px-4 py-2 text-center">true</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <CodeExample 
-              code={`let umur = 18;
-let nilai = 85;
-
-// Perbandingan angka
-console.log(umur >= 17);     // true (dewasa)
-console.log(nilai > 70);     // true (lulus)
-console.log(umur < 20);      // true (remaja)
-
-// Perbedaan == dan ===
-console.log(5 == "5");       // true (hanya cek nilai)
-console.log(5 === "5");      // false (cek nilai DAN tipe data)
-
-console.log(5 != "5");       // false
-console.log(5 !== "5");      // true (tipe berbeda)
-
-// Best practice: gunakan === dan !==
-let x = 10;
-console.log(x === 10);       // true`}
-            />
-          </ContentCard>
-
-          <ContentCard title="4. Operator Logika" icon="🧠">
-            <p className="mb-3">
-              Operator logika digunakan untuk menggabungkan beberapa kondisi. 
-              Hasilnya berupa boolean (true atau false).
-            </p>
-            
-            <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="border px-4 py-2">Operator</th>
-                    <th className="border px-4 py-2">Nama</th>
-                    <th className="border px-4 py-2">Deskripsi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">&&</td>
-                    <td className="border px-4 py-2">AND (Dan)</td>
-                    <td className="border px-4 py-2">True jika SEMUA kondisi true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">||</td>
-                    <td className="border px-4 py-2">OR (Atau)</td>
-                    <td className="border px-4 py-2">True jika SALAH SATU kondisi true</td>
-                  </tr>
-                  <tr>
-                    <td className="border px-4 py-2 font-mono">!</td>
-                    <td className="border px-4 py-2">NOT (Tidak)</td>
-                    <td className="border px-4 py-2">Membalik nilai boolean</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <CodeExample 
-              code={`let umur = 20;
-let punyaSIM = true;
-let nilai = 85;
-
-// Operator AND (&&)
-// True jika SEMUA kondisi true
-let bisaMenyetir = umur >= 17 && punyaSIM;
-console.log(bisaMenyetir);  // true
-
-let lulusIstimewa = nilai >= 90 && nilai <= 100;
-console.log(lulusIstimewa);  // false (nilai 85)
-
-// Operator OR (||)
-// True jika SALAH SATU kondisi true
-let lulus = nilai >= 70 || nilai === 100;
-console.log(lulus);  // true
-
-let libur = hari === "Sabtu" || hari === "Minggu";
-
-// Operator NOT (!)
-// Membalik nilai boolean
-let belumDewasa = !(umur >= 18);
-console.log(belumDewasa);  // false
-
-let tidakAktif = !punyaSIM;
-console.log(tidakAktif);  // false`}
+              code={`// Operator Aritmatika di Java
+public class OperatorAritmatika {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 3;
+        
+        // Operasi dasar
+        System.out.println("a + b = " + (a + b));  // 13
+        System.out.println("a - b = " + (a - b));  // 7
+        System.out.println("a * b = " + (a * b));  // 30
+        System.out.println("a / b = " + (a / b));  // 3 (integer division)
+        System.out.println("a % b = " + (a % b));  // 1 (sisa bagi)
+        
+        // Untuk hasil desimal, gunakan double
+        double c = 10.0;
+        double d = 3.0;
+        System.out.println("c / d = " + (c / d));  // 3.3333...
+        
+        // Case nyata: Hitung total belanja
+        int hargaBuku = 25000;
+        int jumlahBuku = 3;
+        int totalBelanja = hargaBuku * jumlahBuku;
+        System.out.println("Total: Rp " + totalBelanja);  // Rp 75000
+    }
+}`}
             />
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-4">
-              <p className="font-semibold text-blue-800">💡 Tabel Kebenaran:</p>
-              <div className="mt-3 space-y-2 text-sm">
-                <p><strong>AND (&&):</strong> true && true = true, sisanya false</p>
-                <p><strong>OR (||):</strong> false || false = false, sisanya true</p>
-                <p><strong>NOT (!):</strong> !true = false, !false = true</p>
+              <p className="font-semibold text-blue-800">💡 Case Nyata: Kasir Supermarket</p>
+              <p className="text-blue-700">
+                Modulus (%) berguna untuk menghitung kembalian. Misalnya: pembeli bayar Rp 100.000 
+                untuk belanja Rp 73.000, kembalian = 100000 - 73000 = 27000
+              </p>
+            </div>
+          </ContentCard>
+
+          <ContentCard title="2. Operator Penugasan" icon="📝">
+            <CodeExample 
+              code={`// Operator Penugasan
+public class OperatorPenugasan {
+    public static void main(String[] args) {
+        int skor = 100;
+        
+        // Compound assignment operators
+        skor += 20;  // skor = skor + 20; (120)
+        System.out.println("Setelah += 20: " + skor);
+        
+        skor -= 10;  // skor = skor - 10; (110)
+        System.out.println("Setelah -= 10: " + skor);
+        
+        skor *= 2;   // skor = skor * 2; (220)
+        System.out.println("Setelah *= 2: " + skor);
+        
+        skor /= 4;   // skor = skor / 4; (55)
+        System.out.println("Setelah /= 4: " + skor);
+        
+        // Case nyata: Update saldo rekening
+        double saldo = 1000000;
+        saldo += 500000;   // Deposit
+        saldo -= 250000;   // Tarik tunai
+        System.out.println("Saldo akhir: Rp " + saldo);
+    }
+}`}
+            />
+          </ContentCard>
+
+          <InteractiveDemo 
+            title="Demo Operator Perbandingan" 
+            description="Ubah nilai untuk melihat hasil perbandingan"
+          >
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Nilai A:</label>
+                  <input
+                    type="number"
+                    value={compareA}
+                    onChange={(e) => setCompareA(Number(e.target.value))}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Nilai B:</label>
+                  <input
+                    type="number"
+                    value={compareB}
+                    onChange={(e) => setCompareB(Number(e.target.value))}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                  />
+                </div>
               </div>
+              
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { op: '==', result: compareA == compareB, label: 'Sama dengan' },
+                  { op: '!=', result: compareA != compareB, label: 'Tidak sama' },
+                  { op: '>', result: compareA > compareB, label: 'Lebih besar' },
+                  { op: '<', result: compareA < compareB, label: 'Lebih kecil' },
+                  { op: '>=', result: compareA >= compareB, label: 'Lebih besar/sama' },
+                  { op: '<=', result: compareA <= compareB, label: 'Lebih kecil/sama' },
+                ].map((item, idx) => (
+                  <div key={idx} className={`p-4 rounded-lg border-2 ${item.result ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
+                    <p className="text-sm text-gray-600">{item.label}</p>
+                    <p className="text-xl font-bold">{compareA} {item.op} {compareB}</p>
+                    <p className={`text-2xl font-bold ${item.result ? 'text-green-600' : 'text-red-600'}`}>
+                      {item.result ? 'TRUE' : 'FALSE'}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </InteractiveDemo>
+
+          <ContentCard title="3. Operator Perbandingan" icon="⚖️">
+            <CodeExample 
+              code={`// Operator Perbandingan
+public class OperatorPerbandingan {
+    public static void main(String[] args) {
+        int nilai = 85;
+        int batasLulus = 70;
+        
+        // Perbandingan
+        boolean lulus = nilai >= batasLulus;
+        System.out.println("Lulus: " + lulus);  // true
+        
+        // Case nyata: Cek umur untuk syarat KTP
+        int umur = 18;
+        boolean bisaBuatKTP = umur >= 17;
+        System.out.println("Bisa buat KTP: " + bisaBuatKTP);
+        
+        // Cek diskon berdasarkan pembelian
+        int totalBelanja = 500000;
+        boolean dapatDiskon = totalBelanja > 300000;
+        System.out.println("Dapat diskon: " + dapatDiskon);
+        
+        // Validasi password
+        String inputPassword = "12345";
+        String correctPassword = "secret123";
+        boolean passwordBenar = inputPassword.equals(correctPassword);
+        System.out.println("Login berhasil: " + passwordBenar);
+    }
+}`}
+            />
+          </ContentCard>
+
+          <InteractiveDemo 
+            title="Demo Operator Logika: Cek Syarat Menyetir" 
+            description="Ubah kondisi untuk melihat hasil operasi logika"
+          >
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Umur:</label>
+                  <input
+                    type="number"
+                    value={logicAge}
+                    onChange={(e) => setLogicAge(Number(e.target.value))}
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Punya SIM:</label>
+                  <button
+                    onClick={() => setLogicHasSIM(!logicHasSIM)}
+                    className={`w-full px-4 py-2 rounded-lg text-xl font-bold transition-colors ${
+                      logicHasSIM ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                    }`}
+                  >
+                    {logicHasSIM ? 'YA' : 'TIDAK'}
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg border-2 border-purple-300">
+                <h4 className="font-bold text-gray-800 mb-4">Hasil Pengecekan:</h4>
+                
+                <div className="space-y-3">
+                  <div className={`p-4 rounded-lg ${logicAge >= 17 ? 'bg-green-100 border-2 border-green-400' : 'bg-red-100 border-2 border-red-400'}`}>
+                    <p className="font-mono text-sm mb-1">umur &gt;= 17</p>
+                    <p className="text-lg font-bold">{logicAge >= 17 ? '✅ Sudah cukup umur' : '❌ Belum cukup umur'}</p>
+                  </div>
+
+                  <div className={`p-4 rounded-lg ${logicHasSIM ? 'bg-green-100 border-2 border-green-400' : 'bg-red-100 border-2 border-red-400'}`}>
+                    <p className="font-mono text-sm mb-1">punyaSIM == true</p>
+                    <p className="text-lg font-bold">{logicHasSIM ? '✅ Memiliki SIM' : '❌ Tidak punya SIM'}</p>
+                  </div>
+
+                  <div className={`p-4 rounded-lg ${(logicAge >= 17 && logicHasSIM) ? 'bg-green-200 border-2 border-green-500' : 'bg-red-200 border-2 border-red-500'}`}>
+                    <p className="font-mono text-sm mb-1">(umur &gt;= 17) &amp;&amp; punyaSIM</p>
+                    <p className="text-xl font-bold">
+                      {(logicAge >= 17 && logicHasSIM) ? '🚗 BOLEH MENYETIR!' : '🚫 TIDAK BOLEH MENYETIR'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </InteractiveDemo>
+
+          <ContentCard title="4. Operator Logika" icon="🧠">
+            <CodeExample 
+              code={`// Operator Logika
+public class OperatorLogika {
+    public static void main(String[] args) {
+        int umur = 20;
+        boolean punyaSIM = true;
+        int nilai = 85;
+        
+        // AND (&&): Semua kondisi harus true
+        boolean bisaMenyetir = (umur >= 17) && punyaSIM;
+        System.out.println("Bisa menyetir: " + bisaMenyetir);  // true
+        
+        // OR (||): Salah satu kondisi true sudah cukup
+        boolean lulus = (nilai >= 70) || (nilai == 100);
+        System.out.println("Lulus: " + lulus);  // true
+        
+        // NOT (!): Membalik boolean
+        boolean belumDewasa = !(umur >= 18);
+        System.out.println("Belum dewasa: " + belumDewasa);  // false
+        
+        // Case nyata: Validasi form registrasi
+        String username = "budi123";
+        String password = "secret123";
+        int umurUser = 20;
+        
+        boolean usernameValid = username.length() >= 6;
+        boolean passwordValid = password.length() >= 8;
+        boolean umurValid = umurUser >= 13;
+        
+        boolean registrasiBerhasil = usernameValid && passwordValid && umurValid;
+        System.out.println("Registrasi berhasil: " + registrasiBerhasil);
+    }
+}`}
+            />
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+              <p className="font-semibold text-yellow-800">💡 Case Nyata: Validasi Login</p>
+              <p className="text-yellow-700">
+                Operator logika AND (&&) sering digunakan untuk validasi. User hanya bisa login jika 
+                username BENAR DAN password BENAR DAN akun AKTIF.
+              </p>
             </div>
           </ContentCard>
 
           <ContentCard title="5. Operator Increment & Decrement" icon="📈">
-            <p className="mb-3">
-              Operator untuk menambah atau mengurangi nilai variabel sebesar 1.
-            </p>
-            
             <CodeExample 
-              code={`let angka = 10;
-
-// Increment (menambah 1)
-angka++;
-console.log(angka);  // 11
-
-angka++;
-console.log(angka);  // 12
-
-// Decrement (mengurangi 1)
-angka--;
-console.log(angka);  // 11
-
-// Pre-increment vs Post-increment
-let x = 5;
-let y = x++;  // y = 5, lalu x menjadi 6
-console.log(x, y);  // 6, 5
-
-let a = 5;
-let b = ++a;  // a menjadi 6 dulu, lalu b = 6
-console.log(a, b);  // 6, 6
-
-// Contoh praktis
-let counter = 0;
-counter++;  // tambah 1
-counter++;  // tambah 1
-counter++;  // tambah 1
-console.log(counter);  // 3`}
-            />
-          </ContentCard>
-
-          <ContentCard title="6. Operator String" icon="📝">
-            <p className="mb-3">
-              Operator khusus untuk bekerja dengan string (teks).
-            </p>
-            
-            <CodeExample 
-              code={`// Operator + untuk menggabungkan string
-let namaDepan = "Budi";
-let namaBelakang = "Santoso";
-let namaLengkap = namaDepan + " " + namaBelakang;
-console.log(namaLengkap);  // "Budi Santoso"
-
-// Menggabungkan string dan angka
-let umur = 20;
-let kalimat = "Saya berumur " + umur + " tahun";
-console.log(kalimat);  // "Saya berumur 20 tahun"
-
-// Template literal (cara modern)
-let nama = "Andi";
-let kelas = "10A";
-let pesan = \`Halo, nama saya \${nama} dari kelas \${kelas}\`;
-console.log(pesan);  // "Halo, nama saya Andi dari kelas 10A"
-
-// Operator += untuk string
-let text = "Hello";
-text += " ";
-text += "World";
-console.log(text);  // "Hello World"`}
+              code={`// Operator Increment & Decrement
+public class IncrementDecrement {
+    public static void main(String[] args) {
+        int counter = 0;
+        
+        // Post-increment
+        System.out.println(counter++);  // Print 0, lalu +1
+        System.out.println(counter);    // 1
+        
+        // Pre-increment
+        System.out.println(++counter);  // +1 dulu, lalu print 2
+        
+        // Decrement
+        counter--;
+        System.out.println(counter);    // 1
+        
+        // Case nyata: Counter pengunjung website
+        int pengunjung = 0;
+        pengunjung++;  // User masuk
+        pengunjung++;  // User lain masuk
+        pengunjung++;  // User lain masuk lagi
+        System.out.println("Total pengunjung: " + pengunjung);  // 3
+        
+        // Stock produk berkurang
+        int stock = 10;
+        stock--;  // Terjual 1
+        stock--;  // Terjual 1 lagi
+        System.out.println("Sisa stock: " + stock);  // 8
+    }
+}`}
             />
           </ContentCard>
 
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 mt-8">
-            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan</h3>
+            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan Operator Java</h3>
             <ul className="space-y-2">
-              <li>✅ <strong>Aritmatika:</strong> +, -, *, /, %, **</li>
-              <li>✅ <strong>Penugasan:</strong> =, +=, -=, *=, /=</li>
-              <li>✅ <strong>Perbandingan:</strong> ==, ===, !=, !==, &gt;, &lt;, &gt;=, &lt;=</li>
+              <li>✅ <strong>Aritmatika:</strong> +, -, *, /, % untuk perhitungan</li>
+              <li>✅ <strong>Perbandingan:</strong> ==, !=, &gt;, &lt;, &gt;=, &lt;= menghasilkan boolean</li>
               <li>✅ <strong>Logika:</strong> && (AND), || (OR), ! (NOT)</li>
-              <li>✅ <strong>Increment/Decrement:</strong> ++, --</li>
-              <li>✅ Gunakan === dan !== untuk perbandingan yang aman</li>
+              <li>✅ <strong>Penugasan:</strong> =, +=, -=, *=, /= untuk update nilai</li>
+              <li>✅ <strong>Increment/Decrement:</strong> ++, -- untuk +1/-1</li>
+              <li>✅ Gunakan untuk validasi, perhitungan, dan kontrol logika program</li>
             </ul>
           </div>
         </div>

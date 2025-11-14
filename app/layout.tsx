@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Belajar Pemrograman Dasar",
-  description: "Aplikasi pembelajaran bahasa pemrograman dasar untuk pemula",
+  title: "Belajar Java Programming",
+  description: "Aplikasi pembelajaran bahasa Java dengan animasi interaktif dan contoh case nyata",
 };
 
 export default function RootLayout({

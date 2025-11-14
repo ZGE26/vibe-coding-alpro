@@ -5,42 +5,42 @@ export default function Home() {
     {
       id: 1,
       title: 'Tipe Data',
-      description: 'Pelajari berbagai jenis tipe data dalam pemrograman',
+      description: 'Pelajari tipe data Java dengan simulasi interaktif',
       href: '/tipe-data',
       icon: '📊'
     },
     {
       id: 2,
       title: 'Variabel',
-      description: 'Memahami konsep variabel dan cara penggunaannya',
+      description: 'Memahami variabel Java dengan visualisasi memori',
       href: '/variabel',
       icon: '📦'
     },
     {
       id: 3,
       title: 'Operator',
-      description: 'Mengenal operator aritmatika, perbandingan, dan logika',
+      description: 'Praktik operator Java dengan kalkulator interaktif',
       href: '/operator',
       icon: '➕'
     },
     {
       id: 4,
       title: 'Control Flow',
-      description: 'Belajar percabangan (if-else) dan perulangan (loop)',
+      description: 'Visualisasi percabangan dan perulangan Java',
       href: '/control-flow',
       icon: '🔀'
     },
     {
       id: 5,
-      title: 'Fungsi',
-      description: 'Memahami konsep fungsi dan cara membuatnya',
-      href: '/fungsi',
+      title: 'Method',
+      description: 'Belajar method Java dengan contoh case nyata',
+      href: '/method',
       icon: '⚡'
     },
     {
       id: 6,
       title: 'Array',
-      description: 'Pelajari cara bekerja dengan kumpulan data',
+      description: 'Simulasi array Java dengan visualisasi data',
       href: '/array',
       icon: '📚'
     }
@@ -52,11 +52,14 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-800 mb-4">
-            🚀 Belajar Pemrograman Dasar
+            ☕ Belajar Java Programming
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Panduan lengkap untuk memahami konsep dasar pemrograman dengan mudah dan menyenangkan
+            Pelajari bahasa Java dengan visualisasi interaktif dan contoh case nyata yang mudah dipahami
           </p>
+          <div className="mt-4 inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold">
+            Interactive Learning with Animations 🎯
+          </div>
         </div>
 
         {/* Topics Grid */}
