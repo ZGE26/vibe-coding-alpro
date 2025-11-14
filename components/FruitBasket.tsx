@@ -107,7 +107,7 @@ export default function FruitBasket({ onAddFruit, onRemoveFruit }: FruitBasketPr
         {/* Array visualization */}
         <div className="mt-4 bg-white p-4 rounded-lg border-2 border-gray-300">
           <p className="text-xs text-gray-700 mb-1">Representasi Array:</p>
-          <div className="font-mono text-sm sm:text-base break-all">
+          <div className="font-mono text-sm sm:text-base break-all text-black">
             <span className="text-blue-600">String[]</span> jeruk = 
             <span className="text-green-600"> {`{${fruits.map((_, i) => `"🍊"`).join(', ')}}`}</span>;
           </div>

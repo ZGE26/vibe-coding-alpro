@@ -229,7 +229,7 @@ public class MethodReturn {
                   type="number"
                   value={suhu}
                   onChange={(e) => setSuhu(Number(e.target.value))}
-                  className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
+                  className="w-full px-4 py-2 border-2 border-gray-900 text-black rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
                 />
               </div>
 
