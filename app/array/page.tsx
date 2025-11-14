@@ -1,8 +1,17 @@
+'use client';
+
+import { useState } from 'react';
 import BackButton from '@/components/BackButton';
 import ContentCard from '@/components/ContentCard';
 import CodeExample from '@/components/CodeExample';
+import InteractiveDemo from '@/components/InteractiveDemo';
+import FruitBasket from '@/components/FruitBasket';
+import ArrayVisualization from '@/components/ArrayVisualization';
 
 export default function ArrayPage() {
+  const [arrayCode, setArrayCode] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
@@ -10,467 +19,694 @@ export default function ArrayPage() {
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-            📚 Array
+            🍊 Array di Java
           </h1>
 
           <ContentCard title="Apa itu Array?" icon="💡">
             <p className="mb-4">
-              Array adalah struktur data yang dapat menyimpan banyak nilai dalam 
-              satu variabel. Bayangkan array seperti rak buku yang memiliki banyak 
-              slot, di mana setiap slot dapat menyimpan satu item dan memiliki 
-              nomor urut (indeks) yang dimulai dari 0.
+              Array adalah struktur data yang dapat menyimpan banyak nilai dengan 
+              <strong> tipe data yang sama</strong> dalam satu variabel. Bayangkan array 
+              seperti <strong>baskom berisi jeruk</strong> 🍊 - setiap jeruk punya posisi 
+              (indeks) yang dimulai dari 0!
             </p>
             <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
               <p className="text-yellow-800">
                 <strong>Kegunaan:</strong> Array sangat berguna untuk menyimpan 
-                koleksi data seperti daftar nama siswa, nilai ujian, daftar produk, dll.
+                koleksi data seperti daftar nilai siswa, data penjualan, daftar produk, dll.
               </p>
             </div>
           </ContentCard>
 
-          <ContentCard title="1. Membuat Array" icon="🎯">
+          <InteractiveDemo
+            title="🍊 Visualisasi Array: Baskom Jeruk"
+            description="Coba tambah dan ambil jeruk dari baskom! Setiap jeruk punya posisi (index) dimulai dari 0."
+          >
+            <FruitBasket 
+              onAddFruit={() => setArrayCode([...arrayCode, 'orange'])}
+              onRemoveFruit={() => setArrayCode(arrayCode.slice(0, -1))}
+            />
+          </InteractiveDemo>
+
+          <ContentCard title="1. Membuat Array di Java" icon="🎯">
             <p className="mb-3">
-              Ada beberapa cara untuk membuat array dalam JavaScript.
+              Di Java, array harus punya <strong>ukuran tetap</strong> dan <strong>tipe data sama</strong>.
             </p>
             
             <CodeExample 
-              code={`// Cara 1: Array literal (paling umum)
-let buah = ["Apel", "Jeruk", "Mangga", "Pisang"];
+              language="java"
+              code={`// Cara 1: Deklarasi dengan ukuran
+int[] angka = new int[5];  // Array 5 integer, semua 0
+String[] buah = new String[3];  // Array 3 String, semua null
 
-// Cara 2: Menggunakan constructor Array
-let angka = new Array(1, 2, 3, 4, 5);
+// Cara 2: Deklarasi dengan nilai langsung
+int[] nilai = {85, 90, 78, 92, 88};
+String[] warna = {"Merah", "Hijau", "Biru"};
 
-// Array kosong
-let kosong = [];
+// Tipe array lain
+double[] harga = {15000.5, 25000.0, 35000.75};
+boolean[] status = {true, false, true, true};
+char[] huruf = {'J', 'A', 'V', 'A'};
 
-// Array dengan tipe data berbeda (tidak direkomendasikan)
-let campuran = [1, "Dua", true, null, {nama: "Budi"}];
+// Ukuran array tetap!
+System.out.println("Panjang array nilai: " + nilai.length);  // 5
 
-// Array dengan nilai yang sama
-let nol = new Array(5).fill(0);
-console.log(nol);  // [0, 0, 0, 0, 0]
-
-console.log(buah);  // ["Apel", "Jeruk", "Mangga", "Pisang"]`}
+// Array multi-dimensi (2D)
+int[][] matriks = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};`}
             />
           </ContentCard>
 
           <ContentCard title="2. Mengakses Elemen Array" icon="🔍">
             <p className="mb-3">
-              Setiap elemen dalam array memiliki indeks (nomor urut) yang dimulai dari 0.
+              Index array di Java dimulai dari <strong>0</strong> sampai <strong>length - 1</strong>.
             </p>
             
             <CodeExample 
-              code={`let buah = ["Apel", "Jeruk", "Mangga", "Pisang"];
+              language="java"
+              code={`String[] buah = {"Apel", "Jeruk", "Mangga", "Pisang"};
 
-// Mengakses dengan indeks
-console.log(buah[0]);  // "Apel" (elemen pertama)
-console.log(buah[1]);  // "Jeruk"
-console.log(buah[2]);  // "Mangga"
-console.log(buah[3]);  // "Pisang"
+// Mengakses dengan index
+System.out.println(buah[0]);  // "Apel" (pertama)
+System.out.println(buah[1]);  // "Jeruk"
+System.out.println(buah[2]);  // "Mangga"
+System.out.println(buah[3]);  // "Pisang" (terakhir)
 
 // Mengakses elemen terakhir
-let terakhir = buah[buah.length - 1];
-console.log(terakhir);  // "Pisang"
-
-// Mengakses indeks yang tidak ada
-console.log(buah[10]);  // undefined
+String terakhir = buah[buah.length - 1];
+System.out.println(terakhir);  // "Pisang"
 
 // Mengubah nilai elemen
 buah[1] = "Anggur";
-console.log(buah);  // ["Apel", "Anggur", "Mangga", "Pisang"]
+System.out.println(buah[1]);  // "Anggur"
 
 // Panjang array
-console.log(buah.length);  // 4`}
+System.out.println("Jumlah buah: " + buah.length);  // 4
+
+// ⚠️ HATI-HATI: ArrayIndexOutOfBoundsException
+// System.out.println(buah[10]);  // ERROR!`}
             />
           </ContentCard>
 
-          <ContentCard title="3. Menambah dan Menghapus Elemen" icon="➕">
+          <InteractiveDemo
+            title="📊 Visualisasi Index Array"
+            description="Lihat bagaimana array menyimpan data dengan index!"
+          >
+            <div className="space-y-6">
+              <ArrayVisualization 
+                items={['Apel', 'Jeruk', 'Mangga', 'Pisang', 'Anggur']}
+                title="String[] buah"
+              />
+              
+              <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-300">
+                <h4 className="font-bold text-blue-800 mb-2">💡 Penting!</h4>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• Index pertama = 0</li>
+                  <li>• Index terakhir = length - 1</li>
+                  <li>• Hover jeruk untuk lihat index-nya!</li>
+                </ul>
+              </div>
+            </div>
+          </InteractiveDemo>
+
+          <ContentCard title="3. Loop Array di Java" icon="🔄">
             <p className="mb-3">
-              JavaScript menyediakan berbagai method untuk memanipulasi array.
+              Ada beberapa cara untuk iterasi (loop) array di Java.
             </p>
             
             <CodeExample 
-              code={`let buah = ["Apel", "Jeruk"];
+              language="java"
+              code={`int[] nilai = {85, 90, 78, 92, 88};
 
-// push(): menambah di akhir
-buah.push("Mangga");
-console.log(buah);  // ["Apel", "Jeruk", "Mangga"]
+// 1. For loop klasik (dengan index)
+System.out.println("=== For Loop Klasik ===");
+for (int i = 0; i < nilai.length; i++) {
+    System.out.println("Nilai[" + i + "] = " + nilai[i]);
+}
 
-buah.push("Pisang", "Anggur");
-console.log(buah);  // ["Apel", "Jeruk", "Mangga", "Pisang", "Anggur"]
+// 2. Enhanced for loop / for-each (tanpa index)
+System.out.println("\\n=== For-Each Loop ===");
+for (int n : nilai) {
+    System.out.println("Nilai: " + n);
+}
 
-// pop(): menghapus dari akhir
-let dihapus = buah.pop();
-console.log(dihapus);  // "Anggur"
-console.log(buah);     // ["Apel", "Jeruk", "Mangga", "Pisang"]
+// 3. While loop
+System.out.println("\\n=== While Loop ===");
+int index = 0;
+while (index < nilai.length) {
+    System.out.println("Nilai: " + nilai[index]);
+    index++;
+}
 
-// unshift(): menambah di awal
-buah.unshift("Melon");
-console.log(buah);  // ["Melon", "Apel", "Jeruk", "Mangga", "Pisang"]
+// Contoh: Hitung total dan rata-rata
+int total = 0;
+for (int n : nilai) {
+    total += n;
+}
+double rataRata = (double) total / nilai.length;
 
-// shift(): menghapus dari awal
-let pertama = buah.shift();
-console.log(pertama);  // "Melon"
-console.log(buah);     // ["Apel", "Jeruk", "Mangga", "Pisang"]
-
-// splice(): menghapus/menambah di tengah
-// splice(index, jumlah_hapus, item_baru...)
-buah.splice(2, 1, "Strawberry");
-console.log(buah);  // ["Apel", "Jeruk", "Strawberry", "Pisang"]
-
-// Menghapus tanpa menambah
-buah.splice(1, 1);
-console.log(buah);  // ["Apel", "Strawberry", "Pisang"]`}
+System.out.println("Total: " + total);           // 433
+System.out.println("Rata-rata: " + rataRata);    // 86.6`}
             />
           </ContentCard>
+
+          <InteractiveDemo
+            title="🧮 Kalkulator Array"
+            description="Masukkan angka dan lihat perhitungan otomatis!"
+          >
+            <ArrayCalculator />
+          </InteractiveDemo>
 
           <ContentCard title="4. Mencari Elemen dalam Array" icon="🔎">
             <p className="mb-3">
-              Berbagai cara untuk mencari elemen dalam array.
+              Cara mencari nilai tertentu dalam array Java.
             </p>
             
             <CodeExample 
-              code={`let angka = [10, 20, 30, 40, 50];
-
-// indexOf(): mencari indeks elemen
-console.log(angka.indexOf(30));   // 2
-console.log(angka.indexOf(100));  // -1 (tidak ditemukan)
-
-// includes(): cek apakah elemen ada
-console.log(angka.includes(30));   // true
-console.log(angka.includes(100));  // false
-
-// find(): mencari elemen yang sesuai kondisi
-let nilai = [65, 75, 85, 95];
-let lulus = nilai.find(n => n >= 80);
-console.log(lulus);  // 85 (elemen pertama yang >= 80)
-
-// findIndex(): mencari indeks elemen yang sesuai kondisi
-let indexLulus = nilai.findIndex(n => n >= 80);
-console.log(indexLulus);  // 2
-
-// filter(): mencari semua elemen yang sesuai
-let semuaLulus = nilai.filter(n => n >= 70);
-console.log(semuaLulus);  // [75, 85, 95]
-
-// Contoh dengan array object
-let siswa = [
-  {nama: "Budi", nilai: 85},
-  {nama: "Siti", nilai: 90},
-  {nama: "Andi", nilai: 75}
-];
-
-let siswaTerbaik = siswa.find(s => s.nilai >= 90);
-console.log(siswaTerbaik);  // {nama: "Siti", nilai: 90}`}
-            />
-          </ContentCard>
-
-          <ContentCard title="5. Iterasi Array (Loop)" icon="🔄">
-            <p className="mb-3">
-              Berbagai cara untuk melakukan perulangan pada array.
-            </p>
-            
-            <CodeExample 
-              code={`let buah = ["Apel", "Jeruk", "Mangga", "Pisang"];
-
-// 1. for loop klasik
-for (let i = 0; i < buah.length; i++) {
-  console.log(\`\${i + 1}. \${buah[i]}\`);
+              language="java"
+              code={`// Linear Search (pencarian berurutan)
+public static int cariNilai(int[] array, int cari) {
+    for (int i = 0; i < array.length; i++) {
+        if (array[i] == cari) {
+            return i;  // Return index kalau ketemu
+        }
+    }
+    return -1;  // Return -1 kalau tidak ketemu
 }
 
-// 2. for...of (modern)
-for (let item of buah) {
-  console.log(item);
+// Contoh penggunaan
+int[] angka = {10, 25, 30, 45, 50};
+
+int index = cariNilai(angka, 30);
+if (index != -1) {
+    System.out.println("Ketemu di index: " + index);  // 2
+} else {
+    System.out.println("Tidak ketemu!");
 }
 
-// 3. forEach (method array)
-buah.forEach((item, index) => {
-  console.log(\`\${index}: \${item}\`);
-});
-
-// forEach dengan fungsi terpisah
-function tampilkan(item, index) {
-  console.log(\`Buah ke-\${index + 1}: \${item}\`);
+// Cek apakah elemen ada
+public static boolean adaDiArray(String[] array, String cari) {
+    for (String item : array) {
+        if (item.equals(cari)) {
+            return true;
+        }
+    }
+    return false;
 }
-buah.forEach(tampilkan);
 
-// Contoh: menghitung total
-let nilai = [85, 90, 78, 92, 88];
-let total = 0;
+String[] buah = {"Apel", "Jeruk", "Mangga"};
+System.out.println(adaDiArray(buah, "Jeruk"));   // true
+System.out.println(adaDiArray(buah, "Pisang"));  // false
 
-nilai.forEach(n => {
-  total += n;
-});
+// Mencari nilai maksimal
+public static int cariMax(int[] array) {
+    int max = array[0];
+    for (int i = 1; i < array.length; i++) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+    return max;
+}
 
-console.log(\`Total: \${total}\`);       // 433
-console.log(\`Rata-rata: \${total / nilai.length}\`);  // 86.6`}
+int[] nilai = {85, 92, 78, 95, 88};
+System.out.println("Nilai tertinggi: " + cariMax(nilai));  // 95`}
             />
           </ContentCard>
 
-          <ContentCard title="6. Method Array yang Penting" icon="⚡">
+          <ContentCard title="5. Sorting Array" icon="↕️">
             <p className="mb-3">
-              JavaScript menyediakan banyak method built-in untuk array.
+              Mengurutkan elemen array dari kecil ke besar atau sebaliknya.
             </p>
             
             <CodeExample 
-              code={`let angka = [1, 2, 3, 4, 5];
+              language="java"
+              code={`import java.util.Arrays;
 
-// map(): transformasi setiap elemen
-let duaKali = angka.map(n => n * 2);
-console.log(duaKali);  // [2, 4, 6, 8, 10]
+public class SortingArray {
+    public static void main(String[] args) {
+        // Array angka
+        int[] angka = {45, 12, 85, 32, 67, 23};
+        
+        // Sort ascending (kecil ke besar)
+        Arrays.sort(angka);
+        System.out.println("Ascending: " + Arrays.toString(angka));
+        // Output: [12, 23, 32, 45, 67, 85]
+        
+        // Array String
+        String[] nama = {"Deni", "Andi", "Charlie", "Budi"};
+        Arrays.sort(nama);
+        System.out.println("Alfabetis: " + Arrays.toString(nama));
+        // Output: [Andi, Budi, Charlie, Deni]
+        
+        // Sort descending (besar ke kecil) - manual
+        Integer[] angka2 = {45, 12, 85, 32, 67};
+        Arrays.sort(angka2, (a, b) -> b - a);
+        System.out.println("Descending: " + Arrays.toString(angka2));
+        // Output: [85, 67, 45, 32, 12]
+    }
+}
 
-let kuadrat = angka.map(n => n * n);
-console.log(kuadrat);  // [1, 4, 9, 16, 25]
+// Bubble Sort Manual (untuk belajar algoritma)
+public static void bubbleSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
 
-// filter(): saring elemen yang sesuai kondisi
-let genap = angka.filter(n => n % 2 === 0);
-console.log(genap);  // [2, 4]
-
-let besar = angka.filter(n => n > 3);
-console.log(besar);  // [4, 5]
-
-// reduce(): gabungkan array jadi satu nilai
-let total = angka.reduce((sum, n) => sum + n, 0);
-console.log(total);  // 15
-
-let kali = angka.reduce((prod, n) => prod * n, 1);
-console.log(kali);  // 120
-
-// some(): cek apakah ada elemen yang sesuai
-let adaGenap = angka.some(n => n % 2 === 0);
-console.log(adaGenap);  // true
-
-// every(): cek apakah semua elemen sesuai
-let semuaPositif = angka.every(n => n > 0);
-console.log(semuaPositif);  // true
-
-// sort(): mengurutkan array
-let acak = [3, 1, 4, 1, 5, 9, 2, 6];
-acak.sort();
-console.log(acak);  // [1, 1, 2, 3, 4, 5, 6, 9]
-
-// sort untuk angka (perlu compare function)
-acak.sort((a, b) => b - a);  // descending
-console.log(acak);  // [9, 6, 5, 4, 3, 2, 1, 1]
-
-// reverse(): balik urutan
-let reversed = [1, 2, 3, 4, 5].reverse();
-console.log(reversed);  // [5, 4, 3, 2, 1]`}
+int[] data = {64, 34, 25, 12, 22, 11, 90};
+bubbleSort(data);
+System.out.println("Sorted: " + Arrays.toString(data));`}
             />
           </ContentCard>
 
-          <ContentCard title="7. Menggabungkan dan Memotong Array" icon="✂️">
+          <ContentCard title="6. Copy & Manipulasi Array" icon="✂️">
             <p className="mb-3">
-              Method untuk menggabungkan atau mengambil bagian dari array.
+              Cara menyalin dan memanipulasi array di Java.
             </p>
             
             <CodeExample 
-              code={`// concat(): menggabungkan array
-let buah1 = ["Apel", "Jeruk"];
-let buah2 = ["Mangga", "Pisang"];
-let semua = buah1.concat(buah2);
-console.log(semua);  // ["Apel", "Jeruk", "Mangga", "Pisang"]
+              language="java"
+              code={`import java.util.Arrays;
 
-// Spread operator (cara modern)
-let gabung = [...buah1, ...buah2];
-console.log(gabung);  // ["Apel", "Jeruk", "Mangga", "Pisang"]
+public class ManipulasiArray {
+    public static void main(String[] args) {
+        int[] asli = {1, 2, 3, 4, 5};
+        
+        // 1. Copy array dengan Arrays.copyOf()
+        int[] salinan1 = Arrays.copyOf(asli, asli.length);
+        salinan1[0] = 999;
+        System.out.println("Asli: " + Arrays.toString(asli));       // [1,2,3,4,5]
+        System.out.println("Salinan: " + Arrays.toString(salinan1)); // [999,2,3,4,5]
+        
+        // 2. Copy sebagian dengan Arrays.copyOfRange()
+        int[] sebagian = Arrays.copyOfRange(asli, 1, 4);  // index 1-3
+        System.out.println("Sebagian: " + Arrays.toString(sebagian)); // [2,3,4]
+        
+        // 3. Fill array dengan nilai sama
+        int[] nol = new int[5];
+        Arrays.fill(nol, 10);
+        System.out.println("Fill: " + Arrays.toString(nol)); // [10,10,10,10,10]
+        
+        // 4. Bandingkan array
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {1, 2, 3};
+        int[] arr3 = {1, 2, 4};
+        
+        System.out.println(Arrays.equals(arr1, arr2));  // true
+        System.out.println(Arrays.equals(arr1, arr3));  // false
+        
+        // 5. Convert array ke String
+        System.out.println(Arrays.toString(asli));  // [1, 2, 3, 4, 5]
+        
+        // 6. Binary Search (array harus sorted!)
+        int[] sorted = {10, 20, 30, 40, 50};
+        int index = Arrays.binarySearch(sorted, 30);
+        System.out.println("Index 30: " + index);  // 2
+    }
+}
 
-// slice(): mengambil bagian array (tidak mengubah original)
-let angka = [1, 2, 3, 4, 5];
-let potongan = angka.slice(1, 4);
-console.log(potongan);  // [2, 3, 4]
-console.log(angka);     // [1, 2, 3, 4, 5] (tidak berubah)
+// Gabungkan 2 array
+public static int[] gabungArray(int[] arr1, int[] arr2) {
+    int[] hasil = new int[arr1.length + arr2.length];
+    System.arraycopy(arr1, 0, hasil, 0, arr1.length);
+    System.arraycopy(arr2, 0, hasil, arr1.length, arr2.length);
+    return hasil;
+}
 
-// join(): gabungkan jadi string
-let huruf = ["H", "a", "l", "o"];
-let kata = huruf.join("");
-console.log(kata);  // "Halo"
-
-let buah = ["Apel", "Jeruk", "Mangga"];
-let teks = buah.join(", ");
-console.log(teks);  // "Apel, Jeruk, Mangga"
-
-// split(): kebalikan join (string ke array)
-let kalimat = "Belajar coding itu menyenangkan";
-let kata_array = kalimat.split(" ");
-console.log(kata_array);  // ["Belajar", "coding", "itu", "menyenangkan"]`}
+int[] a = {1, 2, 3};
+int[] b = {4, 5, 6};
+int[] gabung = gabungArray(a, b);
+System.out.println(Arrays.toString(gabung));  // [1,2,3,4,5,6]`}
             />
           </ContentCard>
 
-          <ContentCard title="8. Array 2 Dimensi (Nested Array)" icon="🎭">
+          <ContentCard title="7. Array 2 Dimensi (2D Array)" icon="🎭">
             <p className="mb-3">
-              Array yang berisi array lain, berguna untuk data berbentuk tabel atau matriks.
+              Array yang berisi array lain - seperti tabel atau matriks.
             </p>
             
             <CodeExample 
-              code={`// Array 2 dimensi
-let matriks = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
+              language="java"
+              code={`// Deklarasi array 2D
+int[][] matriks = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
 
 // Mengakses elemen
-console.log(matriks[0]);     // [1, 2, 3]
-console.log(matriks[0][0]);  // 1
-console.log(matriks[1][2]);  // 6
-console.log(matriks[2][1]);  // 8
+System.out.println(matriks[0][0]);  // 1
+System.out.println(matriks[1][2]);  // 6
+System.out.println(matriks[2][1]);  // 8
 
-// Loop nested array
-for (let i = 0; i < matriks.length; i++) {
-  for (let j = 0; j < matriks[i].length; j++) {
-    console.log(\`[\${i}][\${j}] = \${matriks[i][j]}\`);
-  }
+// Loop array 2D
+System.out.println("=== Nested Loop ===");
+for (int i = 0; i < matriks.length; i++) {
+    for (int j = 0; j < matriks[i].length; j++) {
+        System.out.print(matriks[i][j] + " ");
+    }
+    System.out.println();
 }
 
-// Contoh praktis: tabel nilai siswa
-let nilaiSiswa = [
-  ["Budi", 85, 90, 88],
-  ["Siti", 90, 95, 92],
-  ["Andi", 75, 80, 78]
-];
+// Enhanced for loop
+System.out.println("\\n=== For-Each ===");
+for (int[] baris : matriks) {
+    for (int nilai : baris) {
+        System.out.print(nilai + " ");
+    }
+    System.out.println();
+}
 
-// Menampilkan dengan forEach
-nilaiSiswa.forEach(siswa => {
-  let nama = siswa[0];
-  let rata = (siswa[1] + siswa[2] + siswa[3]) / 3;
-  console.log(\`\${nama}: \${rata.toFixed(2)}\`);
-});
+// Contoh praktis: Tabel nilai siswa
+String[][] nilaiSiswa = {
+    {"Budi", "85", "90", "88"},
+    {"Siti", "90", "95", "92"},
+    {"Andi", "75", "80", "78"}
+};
 
-// Array of objects (lebih readable)
-let siswa = [
-  {nama: "Budi", matematika: 85, fisika: 90, kimia: 88},
-  {nama: "Siti", matematika: 90, fisika: 95, kimia: 92},
-  {nama: "Andi", matematika: 75, fisika: 80, kimia: 78}
-];
+System.out.println("\\n=== Daftar Nilai ===");
+System.out.println("Nama\\tMat\\tFis\\tKim\\tRata-rata");
+for (String[] siswa : nilaiSiswa) {
+    String nama = siswa[0];
+    int mat = Integer.parseInt(siswa[1]);
+    int fis = Integer.parseInt(siswa[2]);
+    int kim = Integer.parseInt(siswa[3]);
+    double rata = (mat + fis + kim) / 3.0;
+    
+    System.out.printf("%s\\t%d\\t%d\\t%d\\t%.2f\\n", 
+                      nama, mat, fis, kim, rata);
+}
 
-siswa.forEach(s => {
-  let rata = (s.matematika + s.fisika + s.kimia) / 3;
-  console.log(\`\${s.nama}: \${rata.toFixed(2)}\`);
-});`}
+// Array 2D dengan ukuran berbeda (Jagged Array)
+int[][] jagged = {
+    {1, 2},
+    {3, 4, 5},
+    {6, 7, 8, 9}
+};`}
             />
           </ContentCard>
 
-          <ContentCard title="9. Destructuring Array" icon="📦">
+          <ContentCard title="8. ArrayList - Array Dinamis" icon="🌟">
             <p className="mb-3">
-              Cara modern untuk mengekstrak nilai dari array ke dalam variabel terpisah.
+              ArrayList adalah versi dinamis dari array yang bisa bertambah/berkurang ukurannya.
             </p>
             
             <CodeExample 
-              code={`// Destructuring dasar
-let warna = ["Merah", "Hijau", "Biru"];
+              language="java"
+              code={`import java.util.ArrayList;
 
-// Cara lama
-let warna1 = warna[0];
-let warna2 = warna[1];
-let warna3 = warna[2];
-
-// Destructuring (cara modern)
-let [merah, hijau, biru] = warna;
-console.log(merah);  // "Merah"
-console.log(hijau);  // "Hijau"
-console.log(biru);   // "Biru"
-
-// Skip elemen
-let [pertama, , ketiga] = warna;
-console.log(pertama);  // "Merah"
-console.log(ketiga);   // "Biru"
-
-// Default value
-let [a, b, c, d = "Kuning"] = warna;
-console.log(d);  // "Kuning"
-
-// Rest operator
-let angka = [1, 2, 3, 4, 5];
-let [satu, dua, ...sisanya] = angka;
-console.log(satu);     // 1
-console.log(dua);      // 2
-console.log(sisanya);  // [3, 4, 5]
-
-// Swap variabel dengan destructuring
-let x = 10;
-let y = 20;
-[x, y] = [y, x];
-console.log(x);  // 20
-console.log(y);  // 10
-
-// Destructuring dari function return
-function getKoordinat() {
-  return [10, 20];
+public class ContohArrayList {
+    public static void main(String[] args) {
+        // Buat ArrayList
+        ArrayList<String> buah = new ArrayList<>();
+        
+        // Tambah elemen
+        buah.add("Apel");
+        buah.add("Jeruk");
+        buah.add("Mangga");
+        System.out.println(buah);  // [Apel, Jeruk, Mangga]
+        
+        // Tambah di posisi tertentu
+        buah.add(1, "Pisang");
+        System.out.println(buah);  // [Apel, Pisang, Jeruk, Mangga]
+        
+        // Akses elemen
+        String pertama = buah.get(0);
+        System.out.println("Pertama: " + pertama);  // Apel
+        
+        // Ubah elemen
+        buah.set(1, "Anggur");
+        System.out.println(buah);  // [Apel, Anggur, Jeruk, Mangga]
+        
+        // Hapus elemen
+        buah.remove(2);  // Hapus index 2
+        System.out.println(buah);  // [Apel, Anggur, Mangga]
+        
+        buah.remove("Anggur");  // Hapus by value
+        System.out.println(buah);  // [Apel, Mangga]
+        
+        // Ukuran ArrayList
+        System.out.println("Size: " + buah.size());  // 2
+        
+        // Cek apakah ada
+        System.out.println(buah.contains("Apel"));  // true
+        
+        // Loop ArrayList
+        for (String b : buah) {
+            System.out.println(b);
+        }
+        
+        // Clear semua
+        buah.clear();
+        System.out.println("Kosong? " + buah.isEmpty());  // true
+    }
 }
 
-let [px, py] = getKoordinat();
-console.log(\`x: \${px}, y: \${py}\`);  // x: 10, y: 20`}
+// ArrayList dengan Integer
+ArrayList<Integer> angka = new ArrayList<>();
+angka.add(10);
+angka.add(20);
+angka.add(30);
+
+// Sort
+Collections.sort(angka);
+
+// Reverse
+Collections.reverse(angka);`}
             />
           </ContentCard>
 
-          <ContentCard title="10. Spread dan Rest Operator" icon="🌟">
+          <ContentCard title="9. Contoh Real-World: Sistem Nilai Siswa" icon="🎓">
             <p className="mb-3">
-              Operator (...) yang sangat powerful untuk bekerja dengan array.
+              Aplikasi nyata menggunakan array untuk mengelola data nilai siswa.
             </p>
             
             <CodeExample 
-              code={`// Spread operator: "membuka" array
-let arr1 = [1, 2, 3];
-let arr2 = [4, 5, 6];
+              language="java"
+              code={`import java.util.Arrays;
+import java.util.Scanner;
 
-// Menggabungkan array
-let gabung = [...arr1, ...arr2];
-console.log(gabung);  // [1, 2, 3, 4, 5, 6]
-
-// Copy array (shallow copy)
-let asli = [1, 2, 3];
-let salinan = [...asli];
-salinan.push(4);
-console.log(asli);     // [1, 2, 3] (tidak berubah)
-console.log(salinan);  // [1, 2, 3, 4]
-
-// Menambah elemen
-let buah = ["Apel", "Jeruk"];
-let buahBaru = [...buah, "Mangga", "Pisang"];
-console.log(buahBaru);  // ["Apel", "Jeruk", "Mangga", "Pisang"]
-
-// Spread dalam function call
-let angka = [5, 3, 8, 1, 9];
-console.log(Math.max(...angka));  // 9
-console.log(Math.min(...angka));  // 1
-
-// Rest operator: mengumpulkan sisanya
-function jumlah(...angka) {
-  return angka.reduce((sum, n) => sum + n, 0);
-}
-
-console.log(jumlah(1, 2, 3));        // 6
-console.log(jumlah(1, 2, 3, 4, 5));  // 15
-
-// Kombinasi parameter biasa dan rest
-function perkenalan(nama, umur, ...hobi) {
-  console.log(\`Nama: \${nama}\`);
-  console.log(\`Umur: \${umur}\`);
-  console.log(\`Hobi: \${hobi.join(", ")}\`);
-}
-
-perkenalan("Budi", 20, "Coding", "Gaming", "Reading");
-// Nama: Budi
-// Umur: 20
-// Hobi: Coding, Gaming, Reading`}
+public class SistemNilaiSiswa {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Input jumlah siswa
+        System.out.print("Jumlah siswa: ");
+        int jmlSiswa = sc.nextInt();
+        
+        // Buat array untuk nama dan nilai
+        String[] namaSiswa = new String[jmlSiswa];
+        double[] nilaiSiswa = new double[jmlSiswa];
+        
+        // Input data siswa
+        for (int i = 0; i < jmlSiswa; i++) {
+            System.out.print("Nama siswa " + (i+1) + ": ");
+            namaSiswa[i] = sc.next();
+            
+            System.out.print("Nilai siswa " + (i+1) + ": ");
+            nilaiSiswa[i] = sc.nextDouble();
+        }
+        
+        // Hitung statistik
+        double total = 0;
+        double max = nilaiSiswa[0];
+        double min = nilaiSiswa[0];
+        
+        for (double nilai : nilaiSiswa) {
+            total += nilai;
+            if (nilai > max) max = nilai;
+            if (nilai < min) min = nilai;
+        }
+        
+        double rataRata = total / jmlSiswa;
+        
+        // Tampilkan hasil
+        System.out.println("\\n=== HASIL ANALISIS ===");
+        System.out.println("Total siswa: " + jmlSiswa);
+        System.out.printf("Rata-rata: %.2f\\n", rataRata);
+        System.out.printf("Nilai tertinggi: %.2f\\n", max);
+        System.out.printf("Nilai terendah: %.2f\\n", min);
+        
+        // Tampilkan daftar dengan status
+        System.out.println("\\n=== DAFTAR NILAI ===");
+        for (int i = 0; i < jmlSiswa; i++) {
+            String status = nilaiSiswa[i] >= 75 ? "LULUS" : "REMEDIAL";
+            System.out.printf("%d. %s: %.2f - %s\\n", 
+                            i+1, namaSiswa[i], nilaiSiswa[i], status);
+        }
+        
+        // Hitung jumlah lulus
+        int jumlahLulus = 0;
+        for (double nilai : nilaiSiswa) {
+            if (nilai >= 75) jumlahLulus++;
+        }
+        
+        double persenLulus = (double) jumlahLulus / jmlSiswa * 100;
+        System.out.printf("\\nPersentase kelulusan: %.1f%%\\n", persenLulus);
+    }
+}`}
             />
           </ContentCard>
 
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 mt-8">
-            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan</h3>
+            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan Array di Java</h3>
             <ul className="space-y-2">
-              <li>✅ Array menyimpan banyak nilai dalam satu variabel</li>
-              <li>✅ Indeks dimulai dari 0</li>
-              <li>✅ <strong>push/pop:</strong> tambah/hapus di akhir</li>
-              <li>✅ <strong>unshift/shift:</strong> tambah/hapus di awal</li>
-              <li>✅ <strong>map/filter/reduce:</strong> transformasi data</li>
-              <li>✅ <strong>forEach:</strong> iterasi mudah</li>
-              <li>✅ <strong>spread (...):</strong> copy dan gabungkan array</li>
-              <li>✅ <strong>destructuring:</strong> ekstrak nilai dengan mudah</li>
+              <li>✅ Array = baskom berisi item dengan tipe data sama</li>
+              <li>✅ Index dimulai dari 0 sampai length - 1</li>
+              <li>✅ Ukuran array di Java <strong>TETAP</strong></li>
+              <li>✅ <code className="bg-white/20 px-2 py-1 rounded">Arrays.sort()</code> untuk sorting</li>
+              <li>✅ <code className="bg-white/20 px-2 py-1 rounded">Arrays.copyOf()</code> untuk copy</li>
+              <li>✅ For-each loop: <code className="bg-white/20 px-2 py-1 rounded">for (int n : array)</code></li>
+              <li>✅ ArrayList untuk array dinamis yang bisa berubah ukuran</li>
+              <li>✅ Array 2D untuk data tabel/matriks</li>
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// Component untuk kalkulator array
+function ArrayCalculator() {
+  const [numbers, setNumbers] = useState<number[]>([10, 20, 30, 40, 50]);
+  const [inputValue, setInputValue] = useState('');
+
+  const total = numbers.reduce((sum, n) => sum + n, 0);
+  const average = numbers.length > 0 ? total / numbers.length : 0;
+  const max = numbers.length > 0 ? Math.max(...numbers) : 0;
+  const min = numbers.length > 0 ? Math.min(...numbers) : 0;
+
+  const addNumber = () => {
+    const num = parseInt(inputValue);
+    if (!isNaN(num)) {
+      setNumbers([...numbers, num]);
+      setInputValue('');
+    }
+  };
+
+  const removeNumber = (index: number) => {
+    setNumbers(numbers.filter((_, i) => i !== index));
+  };
+
+  const sortAsc = () => {
+    setNumbers([...numbers].sort((a, b) => a - b));
+  };
+
+  const sortDesc = () => {
+    setNumbers([...numbers].sort((a, b) => b - a));
+  };
+
+  const reset = () => {
+    setNumbers([10, 20, 30, 40, 50]);
+  };
+
+  return (
+    <div className="space-y-4">
+      {/* Array Display */}
+      <div className="bg-white p-4 rounded-lg border-2 border-gray-300">
+        <p className="text-sm text-gray-600 mb-2">Array:</p>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {numbers.map((num, index) => (
+            <div key={index} className="relative group">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg">
+                {num}
+              </div>
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                [{index}]
+              </div>
+              <button
+                onClick={() => removeNumber(index)}
+                className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+              >
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-gray-500">Length: {numbers.length}</p>
+      </div>
+
+      {/* Add Number */}
+      <div className="flex gap-2">
+        <input
+          type="number"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && addNumber()}
+          placeholder="Masukkan angka..."
+          className="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+        />
+        <button
+          onClick={addNumber}
+          className="bg-green-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+        >
+          Tambah
+        </button>
+      </div>
+
+      {/* Statistics */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="bg-blue-50 p-3 rounded-lg border-2 border-blue-200">
+          <p className="text-xs text-blue-600 font-semibold">Total</p>
+          <p className="text-xl font-bold text-blue-700">{total}</p>
+        </div>
+        <div className="bg-green-50 p-3 rounded-lg border-2 border-green-200">
+          <p className="text-xs text-green-600 font-semibold">Rata-rata</p>
+          <p className="text-xl font-bold text-green-700">{average.toFixed(1)}</p>
+        </div>
+        <div className="bg-purple-50 p-3 rounded-lg border-2 border-purple-200">
+          <p className="text-xs text-purple-600 font-semibold">Max</p>
+          <p className="text-xl font-bold text-purple-700">{max}</p>
+        </div>
+        <div className="bg-orange-50 p-3 rounded-lg border-2 border-orange-200">
+          <p className="text-xs text-orange-600 font-semibold">Min</p>
+          <p className="text-xl font-bold text-orange-700">{min}</p>
+        </div>
+      </div>
+
+      {/* Actions */}
+      <div className="grid grid-cols-3 gap-2">
+        <button
+          onClick={sortAsc}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors text-sm"
+        >
+          ↑ Sort Naik
+        </button>
+        <button
+          onClick={sortDesc}
+          className="bg-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-600 transition-colors text-sm"
+        >
+          ↓ Sort Turun
+        </button>
+        <button
+          onClick={reset}
+          className="bg-gray-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-600 transition-colors text-sm"
+        >
+          🔄 Reset
+        </button>
+      </div>
+
+      {/* Code Preview */}
+      <div className="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+        <div className="text-green-400">// Java Code:</div>
+        <div>int[] numbers = {'{'}{numbers.join(', ')}{'}'};</div>
+        <div className="text-yellow-300 mt-2">// Statistik:</div>
+        <div>int total = {total};</div>
+        <div>double average = {average.toFixed(1)};</div>
+        <div>int max = {max};</div>
+        <div>int min = {min};</div>
       </div>
     </div>
   );
