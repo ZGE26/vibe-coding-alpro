@@ -63,7 +63,7 @@ export default function TipeDataPage() {
             </p>
             
             <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
+              <table className="min-w-full bg-white border border-gray-900">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="border px-4 py-2">Tipe</th>
@@ -330,7 +330,7 @@ public class StringDemo {
                   value={stringDemo}
                   onChange={(e) => setStringDemo(e.target.value)}
                   placeholder="Ketik nama Anda..."
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-gray-900 placeholder:text-gray-700"
                 />
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-blue-50 p-3 rounded-lg">

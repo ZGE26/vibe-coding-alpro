@@ -615,7 +615,7 @@ function ArrayCalculator() {
   return (
     <div className="space-y-4">
       {/* Array Display */}
-      <div className="bg-white p-4 rounded-lg border-2 border-gray-300">
+      <div className="bg-white p-4 rounded-lg border-2 border-gray-900">
         <p className="text-sm text-gray-900 mb-2">Array:</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {numbers.map((num, index) => (
@@ -646,7 +646,7 @@ function ArrayCalculator() {
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && addNumber()}
           placeholder="Masukkan angka..."
-          className="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none"
+          className="flex-1 px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 focus:outline-none text-gray-900 placeholder:text-gray-700"
         />
         <button
           onClick={addNumber}

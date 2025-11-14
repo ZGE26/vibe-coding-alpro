@@ -54,7 +54,7 @@ export default function MethodPage() {
                     type="number"
                     value={panjang}
                     onChange={(e) => setPanjang(Number(e.target.value))}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold text-gray-900"
                   />
                 </div>
                 <div>
@@ -63,7 +63,7 @@ export default function MethodPage() {
                     type="number"
                     value={lebar}
                     onChange={(e) => setLebar(Number(e.target.value))}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold text-gray-900"
                   />
                 </div>
               </div>
@@ -229,7 +229,7 @@ public class MethodReturn {
                   type="number"
                   value={suhu}
                   onChange={(e) => setSuhu(Number(e.target.value))}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
+                  className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
                 />
               </div>
 
@@ -413,7 +413,7 @@ public class MethodScope {
                   type="number"
                   value={radius}
                   onChange={(e) => setRadius(Number(e.target.value))}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold"
+                  className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold text-gray-900"
                 />
               </div>
 
