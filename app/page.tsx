@@ -32,13 +32,20 @@ export default function Home() {
     },
     {
       id: 5,
+      title: 'Perulangan',
+      description: 'Pelajari For Loop dan While Loop dengan animasi',
+      href: '/perulangan',
+      icon: '🔄'
+    },
+    {
+      id: 6,
       title: 'Method',
       description: 'Belajar method Java dengan contoh case nyata',
       href: '/method',
       icon: '⚡'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Array',
       description: 'Simulasi array Java dengan visualisasi data',
       href: '/array',
