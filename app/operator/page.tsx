@@ -202,7 +202,7 @@ public class OperatorPenugasan {
                 ].map((item, idx) => (
                   <div key={idx} className={`p-4 rounded-lg border-2 ${item.result ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
                     <p className="text-sm text-gray-900">{item.label}</p>
-                    <p className="text-xl font-bold">{compareA} {item.op} {compareB}</p>
+                    <p className="text-xl font-bold text-gray-900">{compareA} {item.op} {compareB}</p>
                     <p className={`text-2xl font-bold ${item.result ? 'text-green-600' : 'text-red-600'}`}>
                       {item.result ? 'TRUE' : 'FALSE'}
                     </p>
@@ -256,7 +256,7 @@ public class OperatorPerbandingan {
                     type="number"
                     value={logicAge}
                     onChange={(e) => setLogicAge(Number(e.target.value))}
-                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold"
+                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold text-gray-900"
                   />
                 </div>
                 <div>
