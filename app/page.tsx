@@ -50,6 +50,13 @@ export default function Home() {
       description: 'Simulasi array Java dengan visualisasi data',
       href: '/array',
       icon: '📚'
+    },
+    {
+      id: 8,
+      title: 'ArrayList',
+      description: 'Pelajari ArrayList dinamis dengan operasi interaktif',
+      href: '/arraylist',
+      icon: '📋'
     }
   ];
 
