@@ -1,55 +1,150 @@
+"use client";
+
+import { useState } from "react";
 import BackButton from '@/components/BackButton';
 import ContentCard from '@/components/ContentCard';
 import CodeExample from '@/components/CodeExample';
+import InteractiveDemo from "@/components/InteractiveDemo";
 
 export default function ControlFlowPage() {
+  const [nilaiSiswa, setNilaiSiswa] = useState<number>(75);
+  const [umurInput, setUmurInput] = useState<number>(20);
+  const [hariInput, setHariInput] = useState<number>(1);
+  const [suhuInput, setSuhuInput] = useState<number>(25);
+
+  const getGrade = (nilai: number) => {
+    if (nilai >= 90) return { grade: "A", color: "bg-green-500", message: "Sempurna! 🌟" };
+    if (nilai >= 80) return { grade: "B", color: "bg-blue-500", message: "Bagus! 👍" };
+    if (nilai >= 70) return { grade: "C", color: "bg-yellow-500", message: "Cukup 👌" };
+    if (nilai >= 60) return { grade: "D", color: "bg-orange-500", message: "Kurang 😐" };
+    return { grade: "E", color: "bg-red-500", message: "Tidak Lulus 😢" };
+  };
+
+  const getStatusUmur = (umur: number) => {
+    if (umur >= 17) {
+      return { status: "Dewasa", color: "text-green-600", icon: "✅", message: "Boleh membuat KTP" };
+    } else {
+      return { status: "Belum Dewasa", color: "text-red-600", icon: "❌", message: "Belum boleh membuat KTP" };
+    }
+  };
+
+  const getNamaHari = (hari: number) => {
+    const hariNames = ["", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+    return hariNames[hari] || "Tidak Valid";
+  };
+
+  const getSuhuStatus = (suhu: number) => {
+    if (suhu >= 35) return { status: "Sangat Panas", color: "bg-red-600", icon: "🔥" };
+    if (suhu >= 25) return { status: "Panas", color: "bg-orange-500", icon: "☀️" };
+    if (suhu >= 20) return { status: "Hangat", color: "bg-yellow-500", icon: "🌤️" };
+    if (suhu >= 15) return { status: "Sejuk", color: "bg-blue-500", icon: "🌥️" };
+    return { status: "Dingin", color: "bg-blue-700", icon: "❄️" };
+  };
+
+  const gradeResult = getGrade(nilaiSiswa);
+  const umurResult = getStatusUmur(umurInput);
+  const suhuResult = getSuhuStatus(suhuInput);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
       <div className="container mx-auto px-4 py-8">
         <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            🔀 Control Flow (Alur Kontrol)
+            🔀 Control Flow di Java
           </h1>
 
           <ContentCard title="Apa itu Control Flow?" icon="💡">
             <p className="mb-4">
-              Control Flow adalah cara mengatur alur eksekusi program. Dengan control flow, 
-              kita dapat membuat keputusan (percabangan) dan mengulang kode (perulangan) 
-              berdasarkan kondisi tertentu. Ini membuat program menjadi dinamis dan dapat 
-              merespons situasi yang berbeda.
+              <strong>Control Flow</strong> adalah cara mengatur alur eksekusi program di Java. 
+              Dengan control flow, kita dapat membuat <strong>keputusan (percabangan)</strong> 
+              menggunakan if-else dan switch, serta mengatur alur program secara dinamis 
+              berdasarkan kondisi tertentu.
             </p>
+            <div className="bg-purple-50 border-l-4 border-purple-500 p-4 mt-4">
+              <p className="text-purple-800">
+                <strong>Penting:</strong> Halaman ini fokus pada <strong>percabangan</strong> (if-else, switch). 
+                Untuk <strong>perulangan</strong> (for, while), lihat halaman <strong>Perulangan</strong>.
+              </p>
+            </div>
           </ContentCard>
 
           <ContentCard title="1. Percabangan dengan if" icon="🌿">
             <p className="mb-3">
               Statement <code className="bg-gray-200 px-2 py-1 rounded">if</code> digunakan 
-              untuk menjalankan kode jika kondisi bernilai true.
+              untuk menjalankan kode jika kondisi bernilai <strong>true</strong>.
             </p>
             
             <CodeExample 
+              language="java"
               code={`// If sederhana
-let umur = 18;
+int umur = 18;
 
 if (umur >= 17) {
-  console.log("Anda sudah dewasa");
+    System.out.println("Anda sudah dewasa");
 }
 
 // Contoh lain
-let nilai = 85;
+int nilai = 85;
 
 if (nilai >= 70) {
-  console.log("Selamat, Anda lulus!");
+    System.out.println("Selamat, Anda lulus!");
 }
 
 // Dengan kondisi kompleks
-let suhu = 35;
+int suhu = 35;
 
 if (suhu > 30) {
-  console.log("Cuaca sangat panas");
+    System.out.println("Cuaca sangat panas");
 }`}
             />
+          </ContentCard>
+
+          <ContentCard title="🎮 Demo: if Statement" icon="⚡">
+            <InteractiveDemo 
+              title="Cek Status Umur"
+              description="Masukkan umur untuk melihat status (dewasa >= 17)"
+            >
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                    Umur:
+                  </label>
+                  <input
+                    type="number"
+                    value={umurInput}
+                    onChange={(e) => setUmurInput(Number(e.target.value))}
+                    className="w-full p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-xl font-bold text-center"
+                    min="0"
+                    max="100"
+                  />
+                </div>
+
+                <div className={`p-6 rounded-lg text-white text-center ${
+                  umurResult.status === "Dewasa" ? "bg-green-500" : "bg-red-500"
+                }`}>
+                  <p className="text-6xl mb-3">{umurResult.icon}</p>
+                  <p className="text-2xl font-bold mb-2">{umurResult.status}</p>
+                  <p className="text-lg">{umurResult.message}</p>
+                </div>
+
+                <div className="bg-gray-900 text-white p-4 rounded-lg">
+                  <p className="text-sm text-gray-400 mb-2">Kode Java:</p>
+                  <pre className="text-green-400 font-mono text-sm">
+{`int umur = ${umurInput};
+
+if (umur >= 17) {
+    System.out.println("${umurResult.status}");
+    System.out.println("${umurResult.message}");
+}${umurInput < 17 ? ` else {
+    System.out.println("${umurResult.status}");
+    System.out.println("${umurResult.message}");
+}` : ''}`}
+                  </pre>
+                </div>
+              </div>
+            </InteractiveDemo>
           </ContentCard>
 
           <ContentCard title="2. if-else" icon="↔️">
@@ -59,30 +154,31 @@ if (suhu > 30) {
             </p>
             
             <CodeExample 
-              code={`let nilai = 65;
+              language="java"
+              code={`int nilai = 65;
 
 if (nilai >= 70) {
-  console.log("Lulus");
+    System.out.println("Lulus");
 } else {
-  console.log("Tidak lulus");
+    System.out.println("Tidak lulus");
 }
 
 // Contoh lain
-let umur = 16;
+int umur = 16;
 
 if (umur >= 17) {
-  console.log("Boleh membuat KTP");
+    System.out.println("Boleh membuat KTP");
 } else {
-  console.log("Belum boleh membuat KTP");
+    System.out.println("Belum boleh membuat KTP");
 }
 
 // Cek ganjil/genap
-let angka = 7;
+int angka = 7;
 
-if (angka % 2 === 0) {
-  console.log("Genap");
+if (angka % 2 == 0) {
+    System.out.println("Genap");
 } else {
-  console.log("Ganjil");
+    System.out.println("Ganjil");
 }`}
             />
           </ContentCard>
@@ -132,6 +228,101 @@ if (suhu >= 35) {
             </div>
           </ContentCard>
 
+          <ContentCard title="🎮 Demo: if-else if-else" icon="⚡">
+            <InteractiveDemo 
+              title="Sistem Penilaian Grade"
+              description="Masukkan nilai untuk melihat grade (A, B, C, D, E)"
+            >
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                    Nilai Siswa: {nilaiSiswa}
+                  </label>
+                  <input
+                    type="range"
+                    value={nilaiSiswa}
+                    onChange={(e) => setNilaiSiswa(Number(e.target.value))}
+                    className="w-full"
+                    min="0"
+                    max="100"
+                  />
+                </div>
+
+                <div className={`p-8 rounded-lg text-white text-center ${gradeResult.color}`}>
+                  <p className="text-7xl font-bold mb-3">{gradeResult.grade}</p>
+                  <p className="text-2xl font-bold">{gradeResult.message}</p>
+                  <p className="text-lg mt-2">Nilai: {nilaiSiswa}</p>
+                </div>
+
+                <div className="bg-gray-900 text-white p-4 rounded-lg">
+                  <p className="text-sm text-gray-400 mb-2">Kode Java:</p>
+                  <pre className="text-green-400 font-mono text-sm">
+{`int nilai = ${nilaiSiswa};
+
+if (nilai >= 90) {
+    System.out.println("Grade: A");
+} else if (nilai >= 80) {
+    System.out.println("Grade: B");
+} else if (nilai >= 70) {
+    System.out.println("Grade: C");
+} else if (nilai >= 60) {
+    System.out.println("Grade: D");
+} else {
+    System.out.println("Grade: E");
+}`}
+                  </pre>
+                </div>
+              </div>
+            </InteractiveDemo>
+          </ContentCard>
+
+          <ContentCard title="🎮 Demo: Sistem Suhu" icon="🌡️">
+            <InteractiveDemo 
+              title="Klasifikasi Suhu"
+              description="Geser slider untuk melihat kategori suhu"
+            >
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                    Suhu: {suhuInput}°C
+                  </label>
+                  <input
+                    type="range"
+                    value={suhuInput}
+                    onChange={(e) => setSuhuInput(Number(e.target.value))}
+                    className="w-full"
+                    min="0"
+                    max="45"
+                  />
+                </div>
+
+                <div className={`p-8 rounded-lg text-white text-center ${suhuResult.color}`}>
+                  <p className="text-7xl mb-3">{suhuResult.icon}</p>
+                  <p className="text-3xl font-bold mb-2">{suhuResult.status}</p>
+                  <p className="text-2xl">{suhuInput}°C</p>
+                </div>
+
+                <div className="grid grid-cols-5 gap-2 text-xs text-center">
+                  <div className="bg-blue-700 text-white p-2 rounded">
+                    ❄️<br/>&lt;15°C<br/>Dingin
+                  </div>
+                  <div className="bg-blue-500 text-white p-2 rounded">
+                    🌥️<br/>15-19°C<br/>Sejuk
+                  </div>
+                  <div className="bg-yellow-500 text-white p-2 rounded">
+                    🌤️<br/>20-24°C<br/>Hangat
+                  </div>
+                  <div className="bg-orange-500 text-white p-2 rounded">
+                    ☀️<br/>25-34°C<br/>Panas
+                  </div>
+                  <div className="bg-red-600 text-white p-2 rounded">
+                    🔥<br/>≥35°C<br/>Sangat Panas
+                  </div>
+                </div>
+              </div>
+            </InteractiveDemo>
+          </ContentCard>
+
           <ContentCard title="4. Switch Statement" icon="🎚️">
             <p className="mb-3">
               <code className="bg-gray-200 px-2 py-1 rounded">switch</code> adalah 
@@ -140,55 +331,56 @@ if (suhu >= 35) {
             </p>
             
             <CodeExample 
-              code={`let hari = 3;
-let namaHari;
+              language="java"
+              code={`int hari = 3;
+String namaHari;
 
 switch (hari) {
-  case 1:
-    namaHari = "Senin";
-    break;
-  case 2:
-    namaHari = "Selasa";
-    break;
-  case 3:
-    namaHari = "Rabu";
-    break;
-  case 4:
-    namaHari = "Kamis";
-    break;
-  case 5:
-    namaHari = "Jumat";
-    break;
-  case 6:
-    namaHari = "Sabtu";
-    break;
-  case 7:
-    namaHari = "Minggu";
-    break;
-  default:
-    namaHari = "Tidak valid";
+    case 1:
+        namaHari = "Senin";
+        break;
+    case 2:
+        namaHari = "Selasa";
+        break;
+    case 3:
+        namaHari = "Rabu";
+        break;
+    case 4:
+        namaHari = "Kamis";
+        break;
+    case 5:
+        namaHari = "Jumat";
+        break;
+    case 6:
+        namaHari = "Sabtu";
+        break;
+    case 7:
+        namaHari = "Minggu";
+        break;
+    default:
+        namaHari = "Tidak valid";
 }
 
-console.log(namaHari);  // "Rabu"
+System.out.println(namaHari);  // "Rabu"
 
 // Contoh lain: grade nilai
-let grade = "B";
+char grade = 'B';
 
 switch (grade) {
-  case "A":
-    console.log("Sempurna!");
-    break;
-  case "B":
-    console.log("Bagus!");
-    break;
-  case "C":
-    console.log("Cukup");
-    break;
-  case "D":
-    console.log("Kurang");
-    break;
-  default:
-    console.log("Tidak lulus");
+    case 'A':
+        System.out.println("Sempurna!");
+        break;
+    case 'B':
+        System.out.println("Bagus!");
+        break;
+    case 'C':
+        System.out.println("Cukup");
+        break;
+    case 'D':
+        System.out.println("Kurang");
+        break;
+    default:
+        System.out.println("Tidak lulus");
 }`}
             />
 
@@ -201,280 +393,142 @@ switch (grade) {
             </div>
           </ContentCard>
 
-          <ContentCard title="5. Perulangan dengan for" icon="🔁">
-            <p className="mb-3">
-              Loop <code className="bg-gray-200 px-2 py-1 rounded">for</code> digunakan 
-              ketika kita tahu berapa kali perulangan akan dilakukan.
-            </p>
-            
-            <CodeExample 
-              code={`// Struktur for loop
-// for (inisialisasi; kondisi; increment) { kode }
+          <ContentCard title="🎮 Demo: Switch Statement" icon="⚡">
+            <InteractiveDemo 
+              title="Konversi Angka ke Nama Hari"
+              description="Pilih angka 1-7 untuk melihat nama hari"
+            >
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
+                    Pilih Hari (1-7):
+                  </label>
+                  <div className="grid grid-cols-7 gap-2">
+                    {[1, 2, 3, 4, 5, 6, 7].map((h) => (
+                      <button
+                        key={h}
+                        onClick={() => setHariInput(h)}
+                        className={`py-3 rounded-lg font-bold transition-all ${
+                          hariInput === h
+                            ? "bg-indigo-600 text-white scale-110"
+                            : "bg-white text-gray-900 hover:bg-gray-100"
+                        }`}
+                      >
+                        {h}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-// Menampilkan angka 1 sampai 5
-for (let i = 1; i <= 5; i++) {
-  console.log(i);
-}
-// Output: 1, 2, 3, 4, 5
+                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-8 rounded-lg text-center">
+                  <p className="text-sm mb-2">Hari ke-{hariInput}</p>
+                  <p className="text-5xl font-bold">{getNamaHari(hariInput)}</p>
+                </div>
 
-// Menghitung mundur
-for (let i = 10; i >= 1; i--) {
-  console.log(i);
-}
-// Output: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+                <div className="bg-gray-900 text-white p-4 rounded-lg">
+                  <p className="text-sm text-gray-400 mb-2">Kode Java:</p>
+                  <pre className="text-green-400 font-mono text-sm">
+{`int hari = ${hariInput};
+String namaHari;
 
-// Loop dengan step 2
-for (let i = 0; i <= 10; i += 2) {
-  console.log(i);
+switch (hari) {
+    case 1: namaHari = "Senin"; break;
+    case 2: namaHari = "Selasa"; break;
+    case 3: namaHari = "Rabu"; break;
+    case 4: namaHari = "Kamis"; break;
+    case 5: namaHari = "Jumat"; break;
+    case 6: namaHari = "Sabtu"; break;
+    case 7: namaHari = "Minggu"; break;
+    default: namaHari = "Tidak valid";
 }
-// Output: 0, 2, 4, 6, 8, 10
 
-// Loop untuk menghitung jumlah
-let total = 0;
-for (let i = 1; i <= 100; i++) {
-  total += i;
-}
-console.log(total);  // 5050 (jumlah 1-100)`}
-            />
+System.out.println(namaHari);  // "${getNamaHari(hariInput)}"`}
+                  </pre>
+                </div>
+              </div>
+            </InteractiveDemo>
           </ContentCard>
 
-          <ContentCard title="6. Perulangan dengan while" icon="🔄">
+          <ContentCard title="Ternary Operator" icon="❓">
             <p className="mb-3">
-              Loop <code className="bg-gray-200 px-2 py-1 rounded">while</code> digunakan 
-              ketika kita tidak tahu pasti berapa kali perulangan akan dilakukan, 
-              tetapi kita tahu kondisinya.
+              Ternary operator adalah cara singkat menulis if-else sederhana dalam satu baris.
             </p>
-            
             <CodeExample 
-              code={`// While loop
-let angka = 1;
+              language="java"
+              code={`// Format: kondisi ? nilaiJikaTrue : nilaiJikaFalse
 
-while (angka <= 5) {
-  console.log(angka);
-  angka++;
-}
-// Output: 1, 2, 3, 4, 5
+int umur = 20;
+String status = (umur >= 17) ? "Dewasa" : "Belum Dewasa";
+System.out.println(status);  // "Dewasa"
 
-// Contoh: menunggu input yang benar
-let password = "";
+// Contoh lain
+int nilai = 85;
+String hasil = (nilai >= 70) ? "Lulus" : "Tidak Lulus";
+System.out.println(hasil);  // "Lulus"
 
-while (password !== "rahasia") {
-  // Dalam praktik, akan meminta input dari user
-  // password = prompt("Masukkan password:");
-  console.log("Password salah, coba lagi");
-  break;  // untuk contoh ini
-}
+// Nested ternary (hindari jika terlalu kompleks)
+int angka = 5;
+String tipe = (angka > 0) ? "Positif" : (angka < 0) ? "Negatif" : "Nol";
 
-// Contoh: membagi hingga tidak bisa lagi
-let nilai = 100;
-
-while (nilai > 1) {
-  nilai = nilai / 2;
-  console.log(nilai);
-}
-// Output: 50, 25, 12.5, 6.25, 3.125, 1.5625, 0.78125`}
-            />
-
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 mt-4">
-              <p className="font-semibold text-red-800">⚠️ Hati-hati:</p>
-              <p className="text-red-700">
-                Pastikan kondisi while akan menjadi false pada suatu saat, 
-                jika tidak program akan terjebak dalam infinite loop (loop tak terbatas).
-              </p>
-            </div>
-          </ContentCard>
-
-          <ContentCard title="7. do-while Loop" icon="♻️">
-            <p className="mb-3">
-              Loop <code className="bg-gray-200 px-2 py-1 rounded">do-while</code> mirip 
-              dengan while, tetapi kode akan dijalankan minimal satu kali sebelum 
-              kondisi dicek.
-            </p>
-            
-            <CodeExample 
-              code={`// do-while loop
-let i = 1;
-
-do {
-  console.log(i);
-  i++;
-} while (i <= 5);
-// Output: 1, 2, 3, 4, 5
-
-// Perbedaan dengan while
-let x = 10;
-
-// Dengan while (tidak akan dijalankan)
-while (x < 5) {
-  console.log("Ini tidak akan tampil");
-}
-
-// Dengan do-while (dijalankan sekali)
-do {
-  console.log("Ini akan tampil sekali");
-} while (x < 5);
-
-// Contoh praktis: validasi input
-let angka;
-do {
-  // angka = prompt("Masukkan angka 1-10:");
-  angka = 5;  // untuk contoh
-} while (angka < 1 || angka > 10);`}
-            />
-          </ContentCard>
-
-          <ContentCard title="8. break dan continue" icon="⏯️">
-            <p className="mb-3">
-              <code className="bg-gray-200 px-2 py-1 rounded">break</code> dan 
-              <code className="bg-gray-200 px-2 py-1 rounded ml-2">continue</code> 
-              digunakan untuk mengontrol jalannya loop.
-            </p>
-            
-            <CodeExample 
-              code={`// break: menghentikan loop sepenuhnya
-for (let i = 1; i <= 10; i++) {
-  if (i === 5) {
-    break;  // berhenti ketika i = 5
-  }
-  console.log(i);
-}
-// Output: 1, 2, 3, 4
-
-// continue: skip iterasi saat ini, lanjut ke berikutnya
-for (let i = 1; i <= 5; i++) {
-  if (i === 3) {
-    continue;  // lewati angka 3
-  }
-  console.log(i);
-}
-// Output: 1, 2, 4, 5
-
-// Contoh: mencari angka tertentu
-let numbers = [1, 5, 8, 12, 15, 20];
-let cari = 12;
-
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] === cari) {
-    console.log(\`Angka \${cari} ditemukan di index \${i}\`);
-    break;  // berhenti setelah ketemu
-  }
-}
-
-// Contoh: skip angka genap
-for (let i = 1; i <= 10; i++) {
-  if (i % 2 === 0) {
-    continue;  // skip angka genap
-  }
-  console.log(i);  // hanya tampilkan angka ganjil
-}
-// Output: 1, 3, 5, 7, 9`}
-            />
-          </ContentCard>
-
-          <ContentCard title="9. Loop untuk Array" icon="📚">
-            <p className="mb-3">
-              Cara umum untuk melakukan perulangan pada array.
-            </p>
-            
-            <CodeExample 
-              code={`let buah = ["Apel", "Jeruk", "Mangga", "Pisang"];
-
-// 1. For loop biasa
-for (let i = 0; i < buah.length; i++) {
-  console.log(buah[i]);
-}
-
-// 2. For...of (cara modern)
-for (let item of buah) {
-  console.log(item);
-}
-
-// 3. forEach (method array)
-buah.forEach(function(item, index) {
-  console.log(\`\${index + 1}. \${item}\`);
-});
-// Output: 
-// 1. Apel
-// 2. Jeruk
-// 3. Mangga
-// 4. Pisang
-
-// Contoh: menghitung total
-let nilai = [85, 90, 78, 92, 88];
-let total = 0;
-
-for (let n of nilai) {
-  total += n;
-}
-
-let rataRata = total / nilai.length;
-console.log(\`Rata-rata: \${rataRata}\`);  // 86.6`}
-            />
-          </ContentCard>
-
-          <ContentCard title="10. Nested Loop (Loop Bersarang)" icon="🎭">
-            <p className="mb-3">
-              Loop di dalam loop, berguna untuk bekerja dengan data 2 dimensi atau 
-              kombinasi data.
-            </p>
-            
-            <CodeExample 
-              code={`// Nested loop sederhana
-for (let i = 1; i <= 3; i++) {
-  for (let j = 1; j <= 3; j++) {
-    console.log(\`i=\${i}, j=\${j}\`);
-  }
-}
-
-// Membuat pola bintang
-for (let i = 1; i <= 5; i++) {
-  let bintang = "";
-  for (let j = 1; j <= i; j++) {
-    bintang += "*";
-  }
-  console.log(bintang);
-}
-// Output:
-// *
-// **
-// ***
-// ****
-// *****
-
-// Tabel perkalian
-for (let i = 1; i <= 5; i++) {
-  let baris = "";
-  for (let j = 1; j <= 5; j++) {
-    baris += (i * j) + "\t";
-  }
-  console.log(baris);
-}
-
-// Array 2 dimensi
-let matriks = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
-
-for (let i = 0; i < matriks.length; i++) {
-  for (let j = 0; j < matriks[i].length; j++) {
-    console.log(matriks[i][j]);
-  }
+// Lebih baik dibanding:
+String tipe2;
+if (angka > 0) {
+    tipe2 = "Positif";
+} else if (angka < 0) {
+    tipe2 = "Negatif";  
+} else {
+    tipe2 = "Nol";
 }`}
             />
           </ContentCard>
 
-          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl p-6 mt-8">
-            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan</h3>
+          <ContentCard title="Nested If (If Bersarang)" icon="🎭">
+            <p className="mb-3">
+              If di dalam if, digunakan untuk kondisi bertingkat.
+            </p>
+            <CodeExample 
+              language="java"
+              code={`int umur = 20;
+boolean punyaKTP = true;
+
+if (umur >= 17) {
+    System.out.println("Umur mencukupi");
+    
+    if (punyaKTP) {
+        System.out.println("Boleh masuk");
+    } else {
+        System.out.println("Harus bawa KTP");
+    }
+} else {
+    System.out.println("Umur belum cukup");
+}
+
+// Contoh lain: validasi login
+String username = "admin";
+String password = "12345";
+
+if (username.equals("admin")) {
+    if (password.equals("12345")) {
+        System.out.println("Login berhasil");
+    } else {
+        System.out.println("Password salah");
+    }
+} else {
+    System.out.println("Username tidak ditemukan");
+}`}
+            />
+          </ContentCard>
+
+          <div className="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-xl p-6 mt-8">
+            <h3 className="text-2xl font-bold mb-3">📝 Ringkasan Control Flow Java</h3>
             <ul className="space-y-2">
-              <li>✅ <strong>if/else:</strong> Untuk membuat keputusan</li>
-              <li>✅ <strong>switch:</strong> Alternatif if-else untuk banyak pilihan</li>
-              <li>✅ <strong>for:</strong> Loop dengan jumlah iterasi yang pasti</li>
-              <li>✅ <strong>while:</strong> Loop berdasarkan kondisi</li>
-              <li>✅ <strong>do-while:</strong> Loop yang pasti jalan minimal sekali</li>
-              <li>✅ <strong>break:</strong> Keluar dari loop</li>
-              <li>✅ <strong>continue:</strong> Skip ke iterasi berikutnya</li>
+              <li>✅ <strong>if:</strong> Eksekusi kode jika kondisi true</li>
+              <li>✅ <strong>if-else:</strong> Pilih salah satu dari dua opsi</li>
+              <li>✅ <strong>if-else if-else:</strong> Pilih dari banyak kondisi</li>
+              <li>✅ <strong>switch:</strong> Alternatif if-else untuk banyak case</li>
+              <li>✅ <strong>Ternary (?:):</strong> If-else singkat dalam satu baris</li>
+              <li>✅ <strong>Nested if:</strong> If di dalam if untuk kondisi bertingkat</li>
+              <li>✅ Untuk <strong>perulangan</strong>, lihat halaman Perulangan!</li>
             </ul>
           </div>
         </div>
