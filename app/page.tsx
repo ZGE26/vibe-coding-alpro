@@ -57,6 +57,13 @@ export default function Home() {
       description: 'Pelajari ArrayList dinamis dengan operasi interaktif',
       href: '/arraylist',
       icon: '📋'
+    },
+    {
+      id: 9,
+      title: 'Sorting & Searching',
+      description: 'Algoritma Bubble Sort, Sequential dan Binary Search',
+      href: '/sorting-searching',
+      icon: '🔍'
     }
   ];
 
