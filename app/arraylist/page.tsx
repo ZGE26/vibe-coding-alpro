@@ -288,28 +288,28 @@ System.out.println(buah.size());  // 0`}
             >
               <div className="space-y-4">
                 {/* Display ArrayList */}
-                <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-6 rounded-lg">
-                  <div className="flex justify-between items-center mb-3">
-                    <p className="font-bold text-lg">📋 ArrayList Buah</p>
-                    <p className="bg-white/20 px-3 py-1 rounded-full">Size: {items.length}</p>
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 sm:p-6 rounded-lg">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
+                    <p className="font-bold text-base sm:text-lg">📋 ArrayList Buah</p>
+                    <p className="bg-white/20 px-3 py-1 rounded-full text-sm">Size: {items.length}</p>
                   </div>
                   <div className="space-y-2">
                     {items.length === 0 ? (
-                      <p className="text-center py-4 bg-white/10 rounded">
+                      <p className="text-center py-4 bg-white/10 rounded text-sm sm:text-base">
                         ArrayList kosong
                       </p>
                     ) : (
                       items.map((item, index) => (
                         <div 
                           key={index}
-                          className="bg-white/20 p-3 rounded-lg flex justify-between items-center hover:bg-white/30 transition-all"
+                          className="bg-white/20 p-2 sm:p-3 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 hover:bg-white/30 transition-all"
                         >
-                          <span className="font-mono">
+                          <span className="font-mono text-sm sm:text-base break-all">
                             Index {index}: <strong>{item}</strong>
                           </span>
                           <button
                             onClick={() => setItems(items.filter((_, i) => i !== index))}
-                            className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm"
+                            className="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-xs sm:text-sm whitespace-nowrap w-full sm:w-auto"
                           >
                             🗑️ Hapus
                           </button>
@@ -320,20 +320,20 @@ System.out.println(buah.size());  // 0`}
                 </div>
 
                 {/* Add */}
-                <div className="bg-white p-4 rounded-lg border-2 border-green-500">
-                  <h4 className="font-bold text-gray-900 mb-2">➕ add() - Tambah Elemen</h4>
-                  <div className="flex gap-2">
+                <div className="bg-white p-3 sm:p-4 rounded-lg border-2 border-green-500">
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">➕ add() - Tambah Elemen</h4>
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="text"
                       value={newItem}
                       onChange={(e) => setNewItem(e.target.value)}
                       placeholder="Nama buah"
-                      className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                       onKeyPress={(e) => e.key === 'Enter' && addItem()}
                     />
                     <button
                       onClick={addItem}
-                      className="px-6 py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600 text-sm sm:text-base w-full sm:w-auto"
                     >
                       Tambah
                     </button>
@@ -341,19 +341,19 @@ System.out.println(buah.size());  // 0`}
                 </div>
 
                 {/* Get */}
-                <div className="bg-white p-4 rounded-lg border-2 border-blue-500">
-                  <h4 className="font-bold text-gray-900 mb-2">📍 get() - Ambil Elemen</h4>
-                  <div className="flex gap-2">
+                <div className="bg-white p-3 sm:p-4 rounded-lg border-2 border-blue-500">
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">📍 get() - Ambil Elemen</h4>
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="number"
                       value={indexToGet}
                       onChange={(e) => setIndexToGet(e.target.value)}
                       placeholder="Index"
-                      className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     />
                     <button
                       onClick={getItemByIndex}
-                      className="px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 text-sm sm:text-base w-full sm:w-auto"
                     >
                       Ambil
                     </button>
@@ -361,26 +361,26 @@ System.out.println(buah.size());  // 0`}
                 </div>
 
                 {/* Set/Replace */}
-                <div className="bg-white p-4 rounded-lg border-2 border-purple-500">
-                  <h4 className="font-bold text-gray-900 mb-2">✏️ set() - Ubah Elemen</h4>
-                  <div className="flex gap-2">
+                <div className="bg-white p-3 sm:p-4 rounded-lg border-2 border-purple-500">
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">✏️ set() - Ubah Elemen</h4>
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="number"
                       value={replaceIndex}
                       onChange={(e) => setReplaceIndex(e.target.value)}
                       placeholder="Index"
-                      className="w-24 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="w-full sm:w-24 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     />
                     <input
                       type="text"
                       value={replaceValue}
                       onChange={(e) => setReplaceValue(e.target.value)}
                       placeholder="Nilai baru"
-                      className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     />
                     <button
                       onClick={replaceItem}
-                      className="px-6 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 text-sm sm:text-base w-full sm:w-auto"
                     >
                       Ubah
                     </button>
@@ -388,19 +388,19 @@ System.out.println(buah.size());  // 0`}
                 </div>
 
                 {/* Remove by Index */}
-                <div className="bg-white p-4 rounded-lg border-2 border-red-500">
-                  <h4 className="font-bold text-gray-900 mb-2">🗑️ remove() - Hapus by Index</h4>
-                  <div className="flex gap-2">
+                <div className="bg-white p-3 sm:p-4 rounded-lg border-2 border-red-500">
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">🗑️ remove() - Hapus by Index</h4>
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="number"
                       value={indexToRemove}
                       onChange={(e) => setIndexToRemove(e.target.value)}
                       placeholder="Index"
-                      className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     />
                     <button
                       onClick={removeByIndex}
-                      className="px-6 py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 text-sm sm:text-base w-full sm:w-auto"
                     >
                       Hapus
                     </button>
@@ -408,19 +408,19 @@ System.out.println(buah.size());  // 0`}
                 </div>
 
                 {/* Search */}
-                <div className="bg-white p-4 rounded-lg border-2 border-yellow-500">
-                  <h4 className="font-bold text-gray-900 mb-2">🔍 indexOf() - Cari Elemen</h4>
-                  <div className="flex gap-2">
+                <div className="bg-white p-3 sm:p-4 rounded-lg border-2 border-yellow-500">
+                  <h4 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">🔍 indexOf() - Cari Elemen</h4>
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="text"
                       value={searchItem}
                       onChange={(e) => setSearchItem(e.target.value)}
                       placeholder="Cari buah"
-                      className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                      className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     />
                     <button
                       onClick={searchForItem}
-                      className="px-6 py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 text-sm sm:text-base w-full sm:w-auto"
                     >
                       Cari
                     </button>
@@ -430,7 +430,7 @@ System.out.println(buah.size());  // 0`}
                 {/* Clear */}
                 <button
                   onClick={clearAll}
-                  className="w-full py-3 bg-gray-800 text-white rounded-lg font-bold hover:bg-gray-900"
+                  className="w-full py-2 sm:py-3 bg-gray-800 text-white rounded-lg font-bold hover:bg-gray-900 text-sm sm:text-base"
                 >
                   🧹 clear() - Hapus Semua
                 </button>
@@ -556,64 +556,64 @@ int notFound = buah.indexOf("Mangga");   // -1 (tidak ada)`}
               description="Coba sort, reverse, dan operasi matematika"
             >
               <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 rounded-lg">
-                  <p className="font-bold mb-3">📊 ArrayList Numbers</p>
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 sm:p-6 rounded-lg">
+                  <p className="font-bold mb-3 text-base sm:text-lg">📊 ArrayList Numbers</p>
                   <div className="flex flex-wrap gap-2">
                     {numbers.map((num, index) => (
                       <div 
                         key={index}
-                        className="bg-white/20 px-4 py-2 rounded-lg font-bold text-xl"
+                        className="bg-white/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-lg sm:text-xl"
                       >
                         {num}
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
-                    <div className="bg-white/10 p-2 rounded">
-                      Size: <strong>{numbers.length}</strong>
+                  <div className="mt-4 grid grid-cols-3 gap-1.5 sm:gap-2 text-xs sm:text-sm">
+                    <div className="bg-white/10 p-1.5 sm:p-2 rounded text-center">
+                      <div className="block sm:inline">Size: </div><strong>{numbers.length}</strong>
                     </div>
-                    <div className="bg-white/10 p-2 rounded">
-                      Sum: <strong>{numbers.reduce((a, b) => a + b, 0)}</strong>
+                    <div className="bg-white/10 p-1.5 sm:p-2 rounded text-center">
+                      <div className="block sm:inline">Sum: </div><strong>{numbers.reduce((a, b) => a + b, 0)}</strong>
                     </div>
-                    <div className="bg-white/10 p-2 rounded">
-                      Avg: <strong>{(numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(1)}</strong>
+                    <div className="bg-white/10 p-1.5 sm:p-2 rounded text-center">
+                      <div className="block sm:inline">Avg: </div><strong>{(numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(1)}</strong>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="number"
                     value={numberToAdd}
                     onChange={(e) => setNumberToAdd(e.target.value)}
                     placeholder="Masukkan angka"
-                    className="flex-1 p-3 border-2 border-gray-900 rounded-lg text-gray-900"
+                    className="flex-1 p-2 sm:p-3 border-2 border-gray-900 rounded-lg text-gray-900 text-sm sm:text-base"
                     onKeyPress={(e) => e.key === 'Enter' && addNumber()}
                   />
                   <button
                     onClick={addNumber}
-                    className="px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600"
+                    className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 text-sm sm:text-base w-full sm:w-auto"
                   >
                     ➕ Tambah
                   </button>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                   <button
                     onClick={sortNumbers}
-                    className="py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600"
+                    className="py-2 sm:py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600 text-xs sm:text-base"
                   >
                     ⬆️ Sort
                   </button>
                   <button
                     onClick={reverseNumbers}
-                    className="py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600"
+                    className="py-2 sm:py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 text-xs sm:text-base"
                   >
                     🔄 Reverse
                   </button>
                   <button
                     onClick={() => setNumbers([])}
-                    className="py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600"
+                    className="py-2 sm:py-3 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600 text-xs sm:text-base"
                   >
                     🗑️ Clear
                   </button>
