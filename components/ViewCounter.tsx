@@ -12,7 +12,7 @@ export default function ViewCounter({ pageName, className = "" }: ViewCounterPro
 
   return (
     <div className={`inline-flex items-center gap-1.5 text-xs sm:text-sm ${className}`}>
-      <span className="text-gray-600">👁️</span>
+      <span className="text-gray-600">Viewers</span>
       {loading ? (
         <span className="text-gray-500">...</span>
       ) : (
