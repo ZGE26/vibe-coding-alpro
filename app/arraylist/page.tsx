@@ -92,11 +92,9 @@ export default function ArrayListPage() {
     <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            📋 ArrayList di Java
-          </h1>
-
-          <ContentCard title="Apa itu ArrayList?" icon="💡">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+          📋 ArrayList di Java
+        </h1>          <ContentCard title="Apa itu ArrayList?" icon="💡">
             <p className="mb-4">
               <strong>ArrayList</strong> adalah struktur data dinamis di Java yang dapat 
               <strong> berubah ukuran</strong> secara otomatis. Berbeda dengan array biasa 

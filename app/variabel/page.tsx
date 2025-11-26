@@ -49,7 +49,7 @@ System.out.println(${conventionName});`;
     <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
             📦 Variabel di Java
           </h1>
 

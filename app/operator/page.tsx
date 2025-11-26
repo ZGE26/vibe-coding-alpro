@@ -18,11 +18,9 @@ export default function OperatorPage() {
     <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            ➕ Operator di Java
-          </h1>
-
-          <ContentCard title="Apa itu Operator?" icon="💡">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+          ➕ Operator di Java
+        </h1>          <ContentCard title="Apa itu Operator?" icon="💡">
             <p className="mb-4">
               Operator adalah simbol khusus yang digunakan untuk melakukan operasi pada 
               variabel dan nilai. Java memiliki berbagai jenis operator untuk aritmatika, 
