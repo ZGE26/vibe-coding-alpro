@@ -79,20 +79,32 @@ export default function Sidebar() {
     },
   ];
 
+  // Get current page title based on pathname
+  const getCurrentPageTitle = () => {
+    const item = menuItems.find(item => item.href === pathname);
+    return item ? `${item.icon} ${item.title}` : "Java Learning";
+  };
+
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 bg-indigo-600 text-white p-3 rounded-lg shadow-lg hover:bg-indigo-700 transition-all"
-      >
-        {isOpen ? "✕" : "☰"}
-      </button>
+      {/* Sticky Header for Mobile - Shows when sidebar is closed */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg z-40 px-4 py-3 flex items-center justify-between">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2 hover:bg-white/10 rounded-lg transition-all"
+        >
+          <span className="text-2xl">{isOpen ? "✕" : "☰"}</span>
+        </button>
+        <h1 className="text-base font-bold flex-1 text-center truncate px-2">
+          {getCurrentPageTitle()}
+        </h1>
+        <div className="w-10"></div> {/* Spacer for centering */}
+      </header>
 
       {/* Overlay for mobile */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-black/50 z-30"
+          className="lg:hidden fixed inset-0 bg-black/50 z-30 mt-16"
           onClick={() => setIsOpen(false)}
           style={{ touchAction: 'none' }}
         />
@@ -100,7 +112,7 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen bg-gradient-to-b from-indigo-900 to-indigo-800 text-white shadow-2xl z-40 transition-transform duration-300 ${
+        className={`fixed top-16 lg:top-0 left-0 h-[calc(100vh-4rem)] lg:h-screen bg-gradient-to-b from-indigo-900 to-indigo-800 text-white shadow-2xl z-40 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 w-64 overflow-y-auto`}
       >
