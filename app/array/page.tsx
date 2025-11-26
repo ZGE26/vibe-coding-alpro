@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import BackButton from '@/components/BackButton';
+import PageLayout from '@/components/PageLayout';
 import Array1D from './components/Array1D';
 import Array2D from './components/Array2D';
 
@@ -9,9 +9,9 @@ export default function ArrayPage() {
   const [activeTab, setActiveTab] = useState<'1d' | '2d'>('1d');
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
-        <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
@@ -59,5 +59,6 @@ export default function ArrayPage() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BackButton from '@/components/BackButton';
+import PageLayout from '@/components/PageLayout';
 import ContentCard from '@/components/ContentCard';
 import CodeExample from '@/components/CodeExample';
 import InteractiveDemo from "@/components/InteractiveDemo";
@@ -46,9 +46,9 @@ export default function ControlFlowPage() {
   const suhuResult = getSuhuStatus(suhuInput);
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
       <div className="container mx-auto px-4 py-8">
-        <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
@@ -534,5 +534,6 @@ if (username.equals("admin")) {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }

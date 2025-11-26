@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BackButton from "@/components/BackButton";
+import PageLayout from "@/components/PageLayout";
 import ForLoop from "./components/ForLoop";
 import WhileLoop from "./components/WhileLoop";
 
@@ -9,9 +9,9 @@ export default function PerulanganPage() {
   const [activeTab, setActiveTab] = useState<"for" | "while">("for");
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-8">
-        <BackButton />
         
         <div className="max-w-4xl mx-auto mt-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
@@ -51,5 +51,6 @@ export default function PerulanganPage() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }
