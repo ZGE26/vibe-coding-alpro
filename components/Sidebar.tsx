@@ -2,88 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { MENU_ITEMS } from "@/constants/menu-items";
+import { useBodyScrollLock, useCurrentPage } from "@/hooks";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
-  // Lock body scroll when sidebar is open on mobile
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  const menuItems = [
-    {
-      id: 1,
-      title: "Tipe Data",
-      href: "/tipe-data",
-      icon: "📊",
-    },
-    {
-      id: 2,
-      title: "Variabel",
-      href: "/variabel",
-      icon: "📦",
-    },
-    {
-      id: 3,
-      title: "Operator",
-      href: "/operator",
-      icon: "➕",
-    },
-    {
-      id: 4,
-      title: "Control Flow",
-      href: "/control-flow",
-      icon: "🔀",
-    },
-    {
-      id: 5,
-      title: "Perulangan",
-      href: "/perulangan",
-      icon: "🔄",
-    },
-    {
-      id: 6,
-      title: "Method",
-      href: "/method",
-      icon: "⚡",
-    },
-    {
-      id: 7,
-      title: "Array",
-      href: "/array",
-      icon: "📚",
-    },
-    {
-      id: 8,
-      title: "ArrayList",
-      href: "/arraylist",
-      icon: "📋",
-    },
-    {
-      id: 9,
-      title: "Sorting & Searching",
-      href: "/sorting-searching",
-      icon: "🔍",
-    },
-  ];
-
-  // Get current page title based on pathname
-  const getCurrentPageTitle = () => {
-    const item = menuItems.find(item => item.href === pathname);
-    return item ? `${item.icon} ${item.title}` : "Java Learning";
-  };
+  
+  // Use custom hooks
+  useBodyScrollLock(isOpen);
+  const currentPage = useCurrentPage(pathname, MENU_ITEMS);
 
   return (
     <>
@@ -96,7 +25,7 @@ export default function Sidebar() {
           <span className="text-2xl">{isOpen ? "✕" : "☰"}</span>
         </button>
         <h1 className="text-base font-bold flex-1 text-center truncate px-2">
-          {getCurrentPageTitle()}
+          {currentPage.title}
         </h1>
         <div className="w-10"></div> {/* Spacer for centering */}
       </header>
@@ -134,7 +63,7 @@ export default function Sidebar() {
               Materi Pembelajaran
             </p>
             <ul className="space-y-0.5">
-              {menuItems.map((item) => {
+              {MENU_ITEMS.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <li key={item.id}>

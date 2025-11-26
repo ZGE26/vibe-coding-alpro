@@ -1,72 +1,7 @@
 import Link from 'next/link';
+import { MENU_ITEMS } from '@/constants/menu-items';
 
 export default function Home() {
-  const topics = [
-    {
-      id: 1,
-      title: 'Tipe Data',
-      description: 'Pelajari tipe data Java dengan simulasi interaktif',
-      href: '/tipe-data',
-      icon: '📊'
-    },
-    {
-      id: 2,
-      title: 'Variabel',
-      description: 'Memahami variabel Java dengan visualisasi memori',
-      href: '/variabel',
-      icon: '📦'
-    },
-    {
-      id: 3,
-      title: 'Operator',
-      description: 'Praktik operator Java dengan kalkulator interaktif',
-      href: '/operator',
-      icon: '➕'
-    },
-    {
-      id: 4,
-      title: 'Control Flow',
-      description: 'Visualisasi percabangan dan perulangan Java',
-      href: '/control-flow',
-      icon: '🔀'
-    },
-    {
-      id: 5,
-      title: 'Perulangan',
-      description: 'Pelajari For Loop dan While Loop dengan animasi',
-      href: '/perulangan',
-      icon: '🔄'
-    },
-    {
-      id: 6,
-      title: 'Method',
-      description: 'Belajar method Java dengan contoh case nyata',
-      href: '/method',
-      icon: '⚡'
-    },
-    {
-      id: 7,
-      title: 'Array',
-      description: 'Simulasi array Java dengan visualisasi data',
-      href: '/array',
-      icon: '📚'
-    },
-    {
-      id: 8,
-      title: 'ArrayList',
-      description: 'Pelajari ArrayList dinamis dengan operasi interaktif',
-      href: '/arraylist',
-      icon: '📋'
-    },
-    {
-      id: 9,
-      title: 'Sorting & Searching',
-      description: 'Algoritma Bubble Sort, Sequential dan Binary Search',
-      href: '/sorting-searching',
-      icon: '🔍'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-12">
@@ -85,7 +20,7 @@ export default function Home() {
 
         {/* Topics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {topics.map((topic) => (
+          {MENU_ITEMS.map((topic) => (
             <Link 
               key={topic.id} 
               href={topic.href}
