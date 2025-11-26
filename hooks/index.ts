@@ -43,3 +43,38 @@ export function useToggle(initialState: boolean = false): [boolean, () => void, 
 
   return [state, toggle, setToggle];
 }
+
+/**
+ * Custom hook for tracking page views
+ */
+export function usePageViews(pageName: string) {
+  const [views, setViews] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Track view on mount
+    const trackView = async () => {
+      try {
+        // Increment view count
+        await fetch('/api/views', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ page: pageName }),
+        });
+
+        // Get updated count
+        const response = await fetch(`/api/views?page=${encodeURIComponent(pageName)}`);
+        const data = await response.json();
+        setViews(data.views);
+      } catch (error) {
+        console.error('Failed to track view:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    trackView();
+  }, [pageName]);
+
+  return { views, loading };
+}

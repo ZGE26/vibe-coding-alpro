@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import PageLayout from '@/components/PageLayout';
-import ContentCard from '@/components/ContentCard';
-import CodeExample from '@/components/CodeExample';
-import InteractiveDemo from '@/components/InteractiveDemo';
+import PageLayout from "@/components/PageLayout";
+import ContentCard from "@/components/ContentCard";
+import CodeExample from "@/components/CodeExample";
+import InteractiveDemo from "@/components/InteractiveDemo";
 
 export default function MethodPage() {
   const [panjang, setPanjang] = useState(5);
@@ -19,11 +19,12 @@ export default function MethodPage() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-          ⚡ Method di Java
-        </h1>          <ContentCard title="Apa itu Method?" icon="💡">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100">
+      <div className="w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+            ⚙️ Method di Java
+          </h1>
+          <ContentCard title="Apa itu Method?" icon="💡">
             <p className="mb-4">
               Method (fungsi) adalah blok kode yang melakukan tugas tertentu dan dapat 
               dipanggil berkali-kali. Method membuat kode lebih terorganisir, mudah 

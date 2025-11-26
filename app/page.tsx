@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import { MENU_ITEMS } from '@/constants/menu-items';
+import ViewCounter from '@/components/ViewCounter';
 
 export default function Home() {
   return (
@@ -13,8 +16,11 @@ export default function Home() {
           <p className="text-xl text-gray-900 max-w-2xl mx-auto">
             Pelajari bahasa Java dengan visualisasi interaktif dan contoh case nyata yang mudah dipahami
           </p>
-          <div className="mt-4 inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold">
-            Interactive Learning with Animations 🎯
+          <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold">
+              Interactive Learning with Animations 🎯
+            </div>
+            <ViewCounter pageName="home" className="bg-white px-4 py-2 rounded-full shadow-md" />
           </div>
         </div>
 

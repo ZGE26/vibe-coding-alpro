@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import PageLayout from '@/components/PageLayout';
-import ContentCard from '@/components/ContentCard';
-import CodeExample from '@/components/CodeExample';
+import PageLayout from "@/components/PageLayout";
+import ContentCard from "@/components/ContentCard";
+import CodeExample from "@/components/CodeExample";
 import InteractiveDemo from "@/components/InteractiveDemo";
 
 export default function ControlFlowPage() {
@@ -47,9 +47,9 @@ export default function ControlFlowPage() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
+      <div className="w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             🔀 Control Flow di Java
           </h1>
 

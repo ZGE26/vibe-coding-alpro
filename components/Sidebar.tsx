@@ -16,34 +16,9 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Sticky Header for Mobile - Shows when sidebar is closed */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white shadow-lg z-40 px-4 py-3 flex items-center justify-between">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 hover:bg-white/10 rounded-lg transition-all"
-        >
-          <span className="text-2xl">{isOpen ? "✕" : "☰"}</span>
-        </button>
-        <h1 className="text-base font-bold flex-1 text-center truncate px-2">
-          {currentPage.title}
-        </h1>
-        <div className="w-10"></div> {/* Spacer for centering */}
-      </header>
-
-      {/* Overlay for mobile */}
-      {isOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/50 z-30 mt-16"
-          onClick={() => setIsOpen(false)}
-          style={{ touchAction: 'none' }}
-        />
-      )}
-
-      {/* Sidebar */}
+      {/* Sidebar - Hidden on mobile, visible on desktop */}
       <aside
-        className={`fixed top-16 lg:top-0 left-0 h-[calc(100vh-4rem)] lg:h-screen bg-gradient-to-b from-indigo-900 to-indigo-800 text-white shadow-2xl z-40 transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 w-64 overflow-y-auto`}
+        className="hidden lg:block fixed top-0 left-0 h-screen bg-gradient-to-b from-indigo-900 to-indigo-800 text-white shadow-2xl z-40 w-64 overflow-y-auto"
       >
         <div className="p-4">
           {/* Logo/Header */}
@@ -69,7 +44,6 @@ export default function Sidebar() {
                   <li key={item.id}>
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
                       className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${
                         isActive
                           ? "bg-indigo-600 shadow-lg scale-105 font-bold"

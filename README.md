@@ -18,6 +18,7 @@ Platform pembelajaran interaktif untuk belajar bahasa pemrograman Java dengan vi
 - ✅ **Interactive Demos** - Setiap materi dilengkapi demo interaktif
 - ✅ **Visualisasi Real-time** - Animasi untuk memahami konsep
 - ✅ **Code Examples** - Contoh kode Java dengan syntax highlighting
+- ✅ **View Counter** - Tracking jumlah views untuk setiap halaman
 - ✅ **Responsive Design** - Optimal untuk desktop dan mobile
 - ✅ **Notion-style Sidebar** - Navigasi mudah antar materi
 - ✅ **Sticky Header Mobile** - Header tetap terlihat saat scroll
@@ -37,6 +38,8 @@ vibe-code/
 │   ├── page.tsx             # Homepage
 │   ├── layout.tsx           # Root layout
 │   ├── globals.css          # Global styles
+│   ├── api/                 # API routes
+│   │   └── views/           # View counter API
 │   ├── tipe-data/           # Tipe Data page
 │   ├── variabel/            # Variabel page
 │   ├── operator/            # Operator page
@@ -52,6 +55,7 @@ vibe-code/
 ├── components/              # Reusable components
 │   ├── Sidebar.tsx          # Navigation sidebar
 │   ├── PageLayout.tsx       # Layout wrapper
+│   ├── ViewCounter.tsx      # View counter display
 │   ├── BackButton.tsx       # Back navigation
 │   ├── ContentCard.tsx      # Content wrapper
 │   ├── CodeExample.tsx      # Code display
@@ -62,13 +66,17 @@ vibe-code/
 │   └── menu-items.ts        # Navigation menu data
 │
 ├── hooks/                   # Custom React hooks
-│   └── index.ts             # useBodyScrollLock, useCurrentPage, etc.
+│   └── index.ts             # useBodyScrollLock, useCurrentPage, usePageViews, etc.
 │
 ├── types/                   # TypeScript types
 │   └── index.ts             # Common interfaces
 │
 ├── utils/                   # Helper functions
 │   └── index.ts             # Validation, formatting, etc.
+│
+├── docs/                    # Documentation
+│   ├── COMPONENTS.md        # Component guidelines
+│   └── VIEW_COUNTER.md      # View counter feature docs
 │
 └── public/                  # Static assets
 ```
@@ -198,6 +206,36 @@ px-4 sm:px-6 lg:px-8
 // Responsive margin
 mb-6 sm:mb-8
 ```
+
+## 📊 View Counter Feature
+
+Aplikasi ini dilengkapi dengan view counter untuk tracking jumlah pengunjung setiap halaman.
+
+### Architecture
+- **API Route**: `/api/views` - GET dan POST untuk tracking views
+- **Custom Hook**: `usePageViews` - Automatic tracking on component mount
+- **Component**: `ViewCounter` - Display view count dengan icon 👁️
+
+### Usage
+```tsx
+import ViewCounter from "@/components/ViewCounter";
+
+<ViewCounter pageName="your-page" />
+```
+
+### Current Limitations
+- Menggunakan **in-memory storage** (data reset saat server restart)
+- Cocok untuk development dan demo
+- Tidak track unique visitors
+
+### Production Upgrade
+Untuk production, upgrade ke database:
+- Vercel KV (Redis)
+- PostgreSQL dengan Prisma
+- MongoDB
+- Supabase
+
+📖 **Full documentation**: [docs/VIEW_COUNTER.md](./docs/VIEW_COUNTER.md)
 
 ## 🤝 Contributing
 

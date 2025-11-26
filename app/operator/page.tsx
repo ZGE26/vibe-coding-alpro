@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import PageLayout from '@/components/PageLayout';
-import ContentCard from '@/components/ContentCard';
-import CodeExample from '@/components/CodeExample';
-import InteractiveDemo from '@/components/InteractiveDemo';
+import PageLayout from "@/components/PageLayout";
+import ContentCard from "@/components/ContentCard";
+import CodeExample from "@/components/CodeExample";
+import InteractiveDemo from "@/components/InteractiveDemo";
 
 export default function OperatorPage() {
   const [calc1, setCalc1] = useState(10);
@@ -17,10 +17,11 @@ export default function OperatorPage() {
   return (
     <PageLayout>
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-          ➕ Operator di Java
-        </h1>          <ContentCard title="Apa itu Operator?" icon="💡">
+      <div className="w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+            ➕ Operator di Java
+          </h1>
+          <ContentCard title="Apa itu Operator?" icon="💡">
             <p className="mb-4">
               Operator adalah simbol khusus yang digunakan untuk melakukan operasi pada 
               variabel dan nilai. Java memiliki berbagai jenis operator untuk aritmatika, 
