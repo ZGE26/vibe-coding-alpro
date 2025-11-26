@@ -16,10 +16,8 @@ export default function OperatorPage() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
-        
-        <div className="max-w-4xl mx-auto mt-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
           <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
             ➕ Operator di Java
           </h1>
@@ -390,7 +388,6 @@ public class IncrementDecrement {
           </div>
         </div>
       </div>
-    </div>
     </PageLayout>
   );
 }

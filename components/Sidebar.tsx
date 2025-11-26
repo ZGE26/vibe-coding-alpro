@@ -87,15 +87,15 @@ export default function Sidebar() {
       <aside
         className={`fixed top-0 left-0 h-screen bg-gradient-to-b from-indigo-900 to-indigo-800 text-white shadow-2xl z-40 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 w-72 overflow-y-auto`}
+        } lg:translate-x-0 w-64 overflow-y-auto`}
       >
-        <div className="p-6">
+        <div className="p-4">
           {/* Logo/Header */}
-          <Link href="/" className="block mb-8">
-            <div className="flex items-center gap-3 hover:scale-105 transition-transform">
-              <span className="text-4xl">☕</span>
+          <Link href="/" className="block mb-6">
+            <div className="flex items-center gap-2 hover:scale-105 transition-transform">
+              <span className="text-3xl">☕</span>
               <div>
-                <h2 className="text-xl font-bold">Java Learning</h2>
+                <h2 className="text-lg font-bold">Java Learning</h2>
                 <p className="text-xs text-indigo-300">Interactive Tutorial</p>
               </div>
             </div>
@@ -103,10 +103,10 @@ export default function Sidebar() {
 
           {/* Navigation Menu */}
           <nav>
-            <p className="text-xs font-semibold text-indigo-300 mb-3 uppercase tracking-wide">
+            <p className="text-xs font-semibold text-indigo-300 mb-2 uppercase tracking-wide">
               Materi Pembelajaran
             </p>
-            <ul className="space-y-1">
+            <ul className="space-y-0.5">
               {menuItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -114,13 +114,13 @@ export default function Sidebar() {
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                      className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 ${
                         isActive
                           ? "bg-indigo-600 shadow-lg scale-105 font-bold"
                           : "hover:bg-indigo-700/50 hover:translate-x-1"
                       }`}
                     >
-                      <span className="text-2xl">{item.icon}</span>
+                      <span className="text-xl">{item.icon}</span>
                       <span className="text-sm">{item.title}</span>
                     </Link>
                   </li>
@@ -130,7 +130,7 @@ export default function Sidebar() {
           </nav>
 
           {/* Footer Info */}
-          <div className="mt-8 pt-8 border-t border-indigo-700">
+          <div className="mt-6 pt-6 border-t border-indigo-700">
             <Link
               href="/"
               className="flex items-center gap-2 text-sm text-indigo-300 hover:text-white transition-colors"
