@@ -10,7 +10,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-4 py-16 lg:py-24">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6 text-center lg:text-left">
@@ -93,7 +93,7 @@ export default function Home() {
       </div>
 
       {/* Topics Section */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Browse Top Essential Career Courses
