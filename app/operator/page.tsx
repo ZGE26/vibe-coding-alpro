@@ -39,8 +39,8 @@ export default function OperatorPage() {
                   <label className="block text-sm font-semibold text-gray-900 mb-2">Angka 1:</label>
                   <input
                     type="number"
-                    value={logicAge}
-                    onChange={(e) => setLogicAge(Number(e.target.value))}
+                    value={calc1}
+                    onChange={(e) => setCalc1(Number(e.target.value))}
                     className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold text-gray-900"
                   />
                 </div>
@@ -50,7 +50,7 @@ export default function OperatorPage() {
                     type="number"
                     value={calc2}
                     onChange={(e) => setCalc2(Number(e.target.value))}
-                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-2xl font-bold text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg focus:border-blue-500 outline-none text-center text-xl font-bold text-gray-900"
                   />
                 </div>
               </div>
